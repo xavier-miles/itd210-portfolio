@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barcroft Pet Companion</title>
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+	<p><a href="index.html">Barcroft Pet Companion</a></p>
+	<nav class="desktop-nav" aria-label="Desktop navigation">
+		<ul class="desktop-nav-links">
+			<li><a href="index.html" class="active">Home</a></li>
+			<li><a href="about.html">About</a></li>
+			<li><a href="services.html">Services</a></li>
+			<li><a href="gallery.html">Gallery</a></li>
+			<li><a href="testimonials.html">Testimonials</a></li>
+			<li><a href="contact.html">Contact&nbsp;me</a></li>
+		</ul>
+	</nav>
+	<button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+</header>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+	<ul class="mobile-nav-links">
+		<li><a href="index.html" class="active">Home</a></li>
+		<li><a href="about.html">About</a></li>
+		<li><a href="services.html">Services</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
+		<li><a href="testimonials.html">Testimonials</a></li>
+		<li><a href="contact.html">Contact&nbsp;me</a></li>
+	</ul>
+</nav>
+
+<main>
+	<section class="hero">
+		<div class="hero-media">
+			<img src="media/bridge_view_crop.jpg" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
+		</div>
+		<div class="hero-inner">
+			<div class="hero-text">
+				<h1>Barcroft Pet Companion</h1>
+				<p>Reliable, local care for your beloved furry friends.</p>
+			</div>
+			<div class="hero-btns">
+				<a href="services.html" class="cta-btn">View services</a>
+				<a href="contact.html" class="cta-btn">Book now</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="cards">
+		<article class="card">
+			<a href="about.html">
+				<img src="media/headshot.jpg" alt="Young person holding a small beige dog">
+				<div class="card-text">
+					<h2>About me</h2>
+					<p>Learn more about who I am and my history with pets.</p>
+				</div>
+			</a>
+		</article>
+		<article class="card">
+			<a href="services.html">
+				<img src="media/clipboard.png" alt="Clip art of a clipboard with a checklist"> <!-- from https://creazilla.com/media/clipart/3170143/clipboard, Creative Commons 0 (public domain) -->
+				<div class="card-text">
+					<h2>Services</h2>
+					<p>Explore my services and price sheet.</p>
+				</div>
+			</a>
+		</article>
+		<article class="card">
+			<a href="gallery.html">
+				<img src="media/piper_dragon.jpg" alt="Australian labradoodle puppy in front of an inflatable dragon">
+				<div class="card-text">
+					<h2>Gallery</h2>
+					<p>See some of the four-legged friends I've cared for.</p>
+				</div>
+			</a>
+		</article>
+		<article class="card">
+			<a href="testimonials.html">
+				<img src="media/review.png" alt="A post-it note with the word 'Review'"> <!-- from https://www.clipsafari.com/clips/o286079-review, Creative Commons 0 (public domain) -->
+				<div class="card-text">
+					<h2>Testimonials</h2>
+					<p>Read what my clients have said about my services.</p>
+				</div>
+			</a>
+		</article>
+	</section>
+</main>
+
+<footer>
+	<p id="footer">© 2026 Xavier Miles &bull; Created for ITD 210: Web Page Design II</p>
+	<p id="footerSmall">© 2026 Xavier Miles &bull; Created for ITD 210</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

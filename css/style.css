@@ -1,0 +1,511 @@
+/* Work done by Xavier Miles for ITD 210 - Web Page Design II. AI-assisted code is marked and explained. */
+/* TO DO:
+  - make home page cards float up slightly when hovered
+  - make home page cards images/text have equal height even with varying text or image size
+  - make home page hero buttons animate somehow when hovered
+  - work on very large screen size settings? not a priority as much as getting the layout/content down right.
+    Halfway there - convert px values to rem and adjust clamps
+  - add paw print icons in the background on the about me page 
+
+  DONE:
+  - fix footer so it doesn't fill whole page height on short content pages
+      fixed itself when I added the proper navigation html to all pages
+*/
+
+/* design tokens for simpler color usage */
+:root {
+  --primary: #005580; /* dark blue */
+  --secondary: #F7F986; /* pale yellow: accents and hover effects */
+  --dark: #013651; /* gradient and text on bg */
+  --light: #c0cad8; /* high contrast on dark */
+  --bg: #c0cad8aa; /* slightly faded --light */
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  font-family: 'Cabin', sans-serif;
+  color: black;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* pushes footer to bottom, probably */
+  color: var(--dark);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: clamp(1.625rem, 3.5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw, 3.5rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.2vw, 2.5rem);
+}
+
+a:hover {
+  text-decoration: wavy underline;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 75px;
+  display: flex;
+  color: var(--secondary);
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000000; /* ensure it's above everything else */
+}
+
+header p {
+  text-decoration: underline wavy 3px;
+  font-size: clamp(1.1rem, 1.9vw, 3.6rem);
+  font-weight: bold;
+  padding: 0 1rem;
+}
+
+/* Desktop and mobile navbar */
+.desktop-nav-links {
+  font-size: clamp(.95rem, 1.2vw, 2.5rem);
+  list-style-type: none;
+  display: flex;  
+  padding: 0 1rem;
+}
+
+header a, .mobile-nav-links a {
+  text-decoration: none;
+  color: var(--secondary);
+  padding: 0rem 1rem;
+}
+
+header a:hover, .mobile-nav-links a:hover {
+  text-decoration: wavy underline;
+}
+
+header p a:hover {
+  text-decoration: none; /* prevent underline on logo hover */
+}
+
+header a.active {
+  font-weight: bold;
+  padding: .375rem .75rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border-radius: 25px;
+}
+
+.desktop-nav-links a.active:hover, .mobile-nav-links a.active:hover {
+  text-decoration: none; /* prevent underline on active link hover */
+}
+
+.mobile-toggle {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  text-align: right;
+  line-height: 1.5rem;
+  padding: 0;
+  background-color: var(--primary);
+  z-index: 100000;
+  /* This following section of the .mobile-nav ruleset is AI-assisted: Hiding the nav off the top of the webpage when 'closed', and animating when open. Prompt was "How to make mobile nav slide down from the top to open and close". I cross-checked the code AI provided with the code in your provided index.html (.zip file "itd_210_mobile_nav_hero") and recognized the similarities in offset, and animation. */
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 70px;
+  transform: translateY(-110%);
+  transition: transform .33s ease, opacity .33s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.mobile-nav-links {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.mobile-nav-links a {
+  padding: 0rem 1.5rem;
+}
+
+.mobile-nav-links a.active {
+  font-weight: bold;
+  padding: .375rem 1.5rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border-radius: 25px 0 0 25px;
+}
+
+/* Index page Hero section */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  color: var(--secondary);
+}
+
+.hero h1 {
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35); /* dark overlay */
+  z-index: 1;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-media img, .hero-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  color: var(--secondary);
+  padding: 0 1rem;
+  text-shadow: 0px 10px 10px var(--bg);
+}
+
+.hero-btns {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.hero-btns a {
+  text-decoration: none;
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 25px;
+}
+
+/* Cards section */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.cards a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card a:focus, .card a:hover {
+  text-decoration: underline wavy;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid var(--primary);
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.card img {
+  border-radius: 25px 25px 0 0;
+}
+
+.card-text {
+  padding: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+#aboutHero {
+  background-image: linear-gradient(to bottom, var(--primary), var(--dark));
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  grid-template-areas: "intro photo";
+  align-items: center;
+  z-index: 2;
+  /* TO DO: figure out how to make it have a max-height of ~65vh */
+}
+
+#aboutHeroTxt {
+  grid-area: intro;
+  margin: 0 auto;
+  color: var(--light);
+}
+
+/* TO DO: Consider fun font for #aboutHeroTxt h1? */
+
+#aboutHeroTxt h2 {
+  font-style: italic;
+  line-height: 1.25;
+}
+
+#aboutHeroImg {
+  grid-area: photo;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  align-items: center;
+}
+
+#aboutHeroImgImg {
+  border-radius: clamp(25px, 2vw, 50px);
+  overflow: hidden;
+}
+
+#aboutHeroImgImg img {
+  width: 100%;
+  height: 100%;
+  max-height: 450px;
+  object-fit: contain;
+}
+
+#aboutHeroImg .caption {
+  font-size: clamp(0.9rem, 1vw, 2rem);
+  font-style: italic;
+  text-align: center;
+  color: var(--light);
+}
+
+/* I used AI assistance with remembering how to position the dog paws. Specifically, that I should use position: absolute and pointer-events: none */
+#dogPaw1, #dogPaw2 {
+  height: clamp(250px, 25vw, 400px);
+  width: auto;
+  position: absolute;
+  opacity: .2;
+  z-index: -10;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+#dogPaw1 {
+  transform: rotate(135deg);
+  top: -75px;
+  left: -45px;
+}
+
+#dogPaw2 {
+  transform: rotate(315deg);
+  bottom: -75px;
+  right: -45px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: clamp(1.25rem, 2.5vw, 2.5rem);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  z-index: 1;
+  position: relative;
+}
+
+.about-text h2 {
+  margin-bottom: .25rem;
+}
+
+.about-text p {
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: clamp(1rem, 4vw, 3rem);
+}
+
+.about-stat {
+  border: .375rem outset var(--secondary);
+  border-radius: 16px;
+  background-color: var(--light);
+  padding: 2% 4%;
+  height: 100%;
+  max-height: 128px;
+  min-height: 64px;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  transition: .2s ease;
+}
+
+.about-stat:hover {
+  background-color: var(--secondary);
+  transition: .2s ease;
+}
+
+.about-stat p {
+  font-size: clamp(1.25rem, 1.8vw, 2.5rem);
+  font-weight: bold;
+}
+
+#sourceCredits {
+  margin-bottom: .5rem;
+}
+
+.caption {
+  font-size: clamp(0.9rem, 1vw, 2rem);
+  font-style: italic;
+  text-align: center;
+}
+
+footer {
+  background-color: var(--dark);
+  height: 50px;
+  display: flex;
+  color: var(--light);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+footer p {
+  font-size: clamp(0.9rem, 1vw, 2rem);
+}
+
+#footerSmall {
+  display: none;
+}
+
+/* Responsive styles */
+
+/* Display alternate small footer on tiny screens */
+@media (max-width: 400px) {
+  #footer {
+    display: none;
+  }
+
+  #footerSmall {
+    display: inline;
+  }
+}
+
+@media (max-width: 600px) {
+  /* aboutHero will wrap*/
+  #aboutHero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #aboutHeroImg {
+    padding-bottom: 0;
+  }
+
+  #aboutHeroTxt {
+    text-align: center;
+    flex-direction: row;
+    height: 100px;
+    align-content: center;
+  }
+  
+  #aboutHeroTxt h1, #aboutHeroTxt h2 {
+    display: inline;
+    line-height: 2rem;
+  }
+  
+  #aboutHeroTxt h1::after {
+    content: " ";
+  }
+
+  .about-hero-line-2::after {
+    content: " - ";
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-stat {
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 980px) { /* Mobile styles */
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+    margin: 0 2rem;
+    font-size: 1.5rem;
+    background: var(--light);
+    border: 2px solid gray;
+    border-radius: 50%;
+    color: var(--primary);
+    cursor: pointer;
+    padding: .25rem .5rem;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+  
+  .mobile-nav.open {
+    /* Slide into view */
+    transform: translateY(0);
+    pointer-events: auto; /* allow clicking when open */
+    opacity: 1;
+  }
+
+  #aboutHero {  
+    grid-template-columns: 3fr 4fr;
+  }
+}
+
+@media (min-width: 3000px) {
+  #aboutHeroImgImg img {
+    max-height: 900px;
+  } 
+}

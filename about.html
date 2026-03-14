@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Barcroft Pet Companion</title>
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- desktop navigation -->
+<header>
+	<p><a href="index.html">Barcroft Pet Companion</a></p>
+	<nav class="desktop-nav" aria-label="Desktop navigation">
+		<ul class="desktop-nav-links">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html" class="active">About</a></li>
+			<li><a href="services.html">Services</a></li>
+			<li><a href="gallery.html">Gallery</a></li>
+			<li><a href="testimonials.html">Testimonials</a></li>
+			<li><a href="contact.html">Contact me</a></li>
+		</ul>
+	</nav>
+	<button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+</header>
+<!-- mobile navigation -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+	<ul class="mobile-nav-links">
+		<li><a href="index.html">Home</a></li>
+		<li><a href="about.html" class="active">About</a></li>
+		<li><a href="services.html">Services</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
+		<li><a href="testimonials.html">Testimonials</a></li>
+		<li><a href="contact.html">Contact&nbsp;me</a></li>
+	</ul>
+</nav>
+
+<main>
+	<div class="wrapper">
+		<!-- hero section acts as a greeting -->
+		<section id="aboutHero">
+			<div id="aboutHeroImg">
+				<div id="aboutHeroImgImg">
+					<img src="media/sophie_xavier.jpg" alt="Young person holding a small beige dog">
+				</div>
+				<p class="caption">My dog Sophie and I</p>
+			</div>
+			<div id="aboutHeroTxt">
+				<h1>Hi,</h1>
+				<h1>I'm Xavier</h1>
+				<br>
+				<h2 class="about-hero-line-2">Dog walker</h2>
+				<h2 class="about-hero-line-2">Student</h2>
+				<h2>Aspiring web dev</h2>
+			</div>
+		</section>
+		<!-- content section has the meat and potatoes -->
+		<section class="about-content">
+			<!-- when seeking assistance on positioning the paws, AI suggested to me to put the aria attribute -->
+			<!-- paws from https://www.flaticon.com/free-icon/dog-paw_12638 -->
+			<img src="media/dog_paw.png" id="dogPaw1" aria-hidden="true" alt="Paw print">
+			<img src="media/dog_paw.png" id="dogPaw2" aria-hidden="true" alt="Paw print">
+			<article class="about-text">
+				<h2>Local service since 2024</h2>
+				<p>In January 2024, I moved from working in retail to pursuing further personal growth, and decided to begin doing
+					animal care as a side hustle. If you live in the Lake, there's a good chance you've seen me walking a dog or
+					two in the last couple years. While I primarily take care of dogs and cats, I've also helped care for a snake.
+					I've cared for all manner of dogs, large and small, and can handle walking more than one dog at the same time.</p>
+				<h2>My approach to animal care</h2>
+				<p>A happy caretaker is a happy animal, so I try to treat all my bookings with joy and positivity. I always try
+					to treat each animal with the care that I would a pet of my own. When I'm provided instructions for a pet's
+					needs, I dutifully follow them to make sure that the animal (and home) is safe, happy, and healthy.</p>
+				<h2>Pet owner for 20 years</h2>
+				<p>I was born and raised in Lake Barcroft. I've lived here my entire life, and I love the people and the
+					environment. From the Lake itself, to the rolling hills, to its position nicely between several larger cities
+					-	and of course its proximity to D.C. - I've always felt at home.
+					<br>
+					In elementary school, we had a few bearded dragon lizards. I also had a couple betta fish of my own, as I
+					learned how to take care of other living creatures.
+					In 2012, we adopted my first dog, Sophie. I'd been wanting a dog for a few years, and my parents finally decided
+					that I was mature enough to get one. We went to a few animal shelters, but didn't find the right dog for me.
+					At one point, there was an expo of dogs up for adoption at a nearby store, and so we decided to check it out.
+					As soon as I saw her, I knew she was the one I wanted, so we took her home.
+					Over the 12 years we had Sophie, we did road trips together, went camping, explored parks and so much more.</p> <!-- Maybe cut down on this one -->
+				<h2>Academic pursuits</h2>
+				<p>In late 2024, I did a short 'career lab' with <a href="https://maxxpotential.com/">Maxx Potential</a> which
+					exposed me to a bit of the fields of cybersecurity, website development, AI training, and other IT sectors. I
+					found myself drawn to website development, and in 2024, I did a short internship with Maxx where I worked with
+					a small team on building a website. Website development struck me as an interesting way to build something
+					both functional and with some creativity in it, and I decided to pursue it as a career. I enrolled in NVCC's
+					website development certificate program, and started working on my development and design skills.</p>
+				</article>
+			<div class="about-stats">
+				<div class="about-stat"><p>20+ years of pet experience</p></div>
+				<div class="about-stat"><p>40+ clients</p></div>
+				<div class="about-stat"><p>Experience with medication</p></div>
+				<div class="about-stat"><p>Animals with 0 to 4 legs, from scales to fur</p></div>
+			</div>
+		</section>
+		<div id="sourceCredits">
+			<p class="caption"><a href="https://www.flaticon.com/free-icons/dog" title="dog icons">Dog icons created by Freepik - Flaticon</a></p>
+		</div>
+	</div>
+</main>
+
+<footer>
+	<p id="footer">© 2026 Xavier Miles &bull; Created for ITD 210: Web Page Design II</p>
+	<p id="footerSmall">© 2026 Xavier Miles &bull; Created for ITD 210</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
