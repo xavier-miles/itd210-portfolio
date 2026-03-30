@@ -23,3 +23,30 @@ document.addEventListener("click", function(event) {
     mobileNav.classList.remove("open");
   }
 });
+
+// Cat fact button functionality from https://catfact.ninja/fact - remember to have the loading message display by default and only display: none if it loads correctly!
+const catFactBtn = document.getElementById("catFactBtn");
+const factLoading = document.getElementById("factLoading");
+const catFactMsg = document.getElementById("catFactMsg");
+
+catFactBtn.addEventListener("click", async function() {
+  factLoading.textContent = "Fact loading!";
+  factLoading.style.display = "block";
+
+  catFactMsg.style.display = "block";
+  
+  try {
+    //get the data from the API
+    const response = await fetch("https://catfact.ninja/fact");
+    const data = await response.json();
+
+    const catFact = document.getElementById("catFact");
+    catFact.textContent = data.fact;
+    factLoading.style.display = "none";
+
+    console.log(data);
+  } catch (error) {
+
+    console.error("Error loading cat fact! " + error)
+  }
+});
