@@ -6,14 +6,12 @@
   - make hero buttons animate somehow when hovered
   - work on very large screen size settings? not a priority as much as getting the layout/content down right.
       Halfway there - convert px values to rem and adjust clamps
+  - Make Cat Fact fade out/in when the fact changes
+  - Figure it out how RARELY the cat facts will go off the bottom of the hero.
+  - Figure out how to extra randomize the cat facts
   ABOUT PAGE:
   - tighten spacing
   - test hero text at larger sizes (h1 is kinda big on my 1440p monitor)
-
-  DONE:
-  - fix footer so it doesn't fill whole page height on short content pages
-      fixed itself when I added the proper navigation html to all pages
-  - add paw print icons in the background on the about me page
 */
 
 /* design tokens for simpler color usage */
@@ -231,7 +229,7 @@ header a.active {
 
 .cat-fact-section {
   position: relative;
-  margin-top: clamp(64px, 8vw, 128px);
+  margin-top: clamp(16px, 8vw, 32px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,15 +238,34 @@ header a.active {
 }
 
 .cat-fact-section p {
-  margin-top: 12px;
+  margin-top: 8px;
   font-style: italic;
-  font-size: clamp(.9rem, .75vw, 1.5rem);
+  font-size: clamp(.8rem, .75vw, 1.4rem);
 }
 
 #catFactMsg {
   position: absolute;
   top: 100%;
-  display: none;
+}
+
+#catFact {
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out 1 forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+.cat-fact-error {
+  color: #950606;
+  background-color: white;
+}
+
+#factsSelect {
+  background-color: var(--light);
+  border-radius: 8px;
 }
 
 .hero button {

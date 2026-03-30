@@ -50,10 +50,17 @@
 				<a href="contact.html" class="cta-btn">Book now</a>
 			</div>
 			<div class="cat-fact-section">
-				<button id="catFactBtn">Get&nbsp;a&nbsp;cat&nbsp;fact</button>
+				<div class="cat-options">
+					<button id="catFactBtn">Get&nbsp;cat&nbsp;facts</button>
+					<select id="factsSelect" name="factsSelect">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</div>
 				<div id="catFactMsg">
 					<p id="factLoading" style="display: none;">Fact loading!</p>
-					<p id="catFact"></p>
+					<div id="catFact"></div>
 
 				</div>
 			</div>
