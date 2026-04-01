@@ -2,7 +2,6 @@
 /* TO DO:
   HOME PAGE: 
   - make cards float up slightly when hovered
-  - make cards images/text have equal height even with varying text or image size
   - make hero buttons animate somehow when hovered
   - work on very large screen size settings? not a priority as much as getting the layout/content down right.
       Halfway there - convert px values to rem and adjust clamps
@@ -203,6 +202,10 @@ header a.active {
 }
 
 .hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 3;
   color: var(--secondary);
@@ -234,6 +237,7 @@ header a.active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: clamp(8px, 2vw, 32px);
 }
 
@@ -279,7 +283,7 @@ header a.active {
 /* Cards section */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 2rem;
   gap: 2rem;
 }
@@ -294,17 +298,39 @@ header a.active {
 }
 
 .card {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
   background-color: white;
   border: 2px solid var(--primary);
   border-radius: 25px;
+  overflow: hidden;
+  height: 800px;
+  max-height: 75vh;
+  transition: transform 0.33s ease, box-shadow .33s ease;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: 12px 12px 32px  var(--dark);
+  z-index: 0;
+}
+
+.card-image {
+  flex: 5;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--primary);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.card img {
-  border-radius: 25px 25px 0 0;
-}
-
 .card-text {
+  flex: 1;
   padding: 1rem;
 }
 
@@ -466,10 +492,42 @@ footer p {
   display: none;
 }
 
+/* Animation styles */
+.load-in {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: loadIn 1s ease forwards;
+}
+
+.load-in-delay-1 {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: loadIn 1s ease forwards;
+  animation-delay: .2s;
+}
+
+.load-in-delay-2 {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: loadIn 1s ease forwards;
+  animation-delay: .33s;
+}
+
+@keyframes loadIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive styles */
 
-/* Display alternate small footer on tiny screens */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+  .hero-btns {
+    flex-direction: column;
+  }
+
+  /* Display alternate small footer on tiny screens */
   #footer {
     display: none;
   }
@@ -480,6 +538,10 @@ footer p {
 }
 
 @media (max-width: 600px) {
+  .hero-inner {
+    max-width: 90%;
+  }
+
   /* aboutHero will wrap*/
   #aboutHero {
     display: flex;

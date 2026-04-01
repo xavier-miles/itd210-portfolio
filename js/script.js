@@ -25,7 +25,8 @@ document.addEventListener("click", function(event) {
   }
 });
 
-// Cat fact button functionality from https://catfact.ninja/fact - remember to have the loading message display by default and only display: none if it loads correctly!
+/* Cat fact button functionality from https://catfact.ninja/fact
+Documentation: https://documenter.getpostman.com/view/1946054/S11HvKSz */
 const catFactBtn = document.getElementById("catFactBtn");
 const factLoading = document.getElementById("factLoading");
 const catFactMsg = document.getElementById("catFactMsg");
