@@ -1,5 +1,6 @@
 /* Work done by Xavier Miles for ITD 210 - Web Page Design II. AI-assisted code is marked and explained. */
 /* TO DO:
+  - Figure out layout issues when on landscape orientation on mobile resolutions
   HOME PAGE: 
   - make cards float up slightly when hovered
   - make hero buttons animate somehow when hovered
@@ -62,7 +63,9 @@ p {
   font-size: clamp(1rem, 1.2vw, 2.5rem);
 }
 
-a:hover {
+a:hover, a:focus,
+header a:hover, header a:focus,
+.mobile-nav-links a:hover, .mobile-nav-links a:focus {
   text-decoration: wavy underline;
 }
 
@@ -81,7 +84,7 @@ header {
 
 header p {
   text-decoration: underline wavy 3px;
-  font-size: clamp(1.1rem, 1.9vw, 3.6rem);
+  font-size: clamp(1rem, 1.6vw, 3rem);
   font-weight: bold;
   padding: 0 1rem;
 }
@@ -100,12 +103,10 @@ header a, .mobile-nav-links a {
   padding: 0rem 1rem;
 }
 
-header a:hover, .mobile-nav-links a:hover {
-  text-decoration: wavy underline;
-}
-
-header p a:hover {
-  text-decoration: none; /* prevent underline on logo hover */
+header p a:hover, header p a:focus,
+.desktop-nav-links a.active:hover, .mobile-nav-links a.active:hover,
+.desktop-nav-links a.active:focus, .mobile-nav-links a.active:focus {
+  text-decoration: none; /* prevent underline on logo and active link hover */
 }
 
 header a.active {
@@ -116,11 +117,8 @@ header a.active {
   border-radius: 25px;
 }
 
-.desktop-nav-links a.active:hover, .mobile-nav-links a.active:hover {
-  text-decoration: none; /* prevent underline on active link hover */
-}
-
-.mobile-toggle {
+.mobile-toggle,
+#footerSmall {
   display: none;
 }
 
@@ -152,12 +150,11 @@ header a.active {
 }
 
 .mobile-nav-links a {
-  padding: 0rem 1.5rem;
+  padding: .375rem 1.5rem;
 }
 
 .mobile-nav-links a.active {
   font-weight: bold;
-  padding: .375rem 1.5rem;
   background-color: var(--secondary);
   color: var(--primary);
   border-radius: 25px 0 0 25px;
@@ -172,7 +169,7 @@ header a.active {
   align-items: center;
   text-align: center;
   overflow: hidden;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   color: var(--secondary);
 }
 
@@ -195,10 +192,82 @@ header a.active {
   z-index: 0;
 }
 
-.hero-media img, .hero-media video {
+.hero-img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   object-fit: cover;
+  /* I had the right starting idea for how to make it slide downwards (helped by the HTML/CSS Playground and Animation Playground!),
+  but I was getting stuck with overscrolling and showing white space below the image, so I used ChatGPT to assist me in a solution
+  that didn'96.5%t look weird - namely, using scale to expand the image so it wouldn't go over. I also had ChatGPT help me figure out
+  how to make the image not "jump" when switching between images - when doing the fadeout-fadein */
+  transform: scale(1.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-fill-mode: both;
+}
+
+.hero-img1 {
+  animation: heroSlide1 30s ease-in-out infinite;
+}
+
+.hero-img2 {
+  animation: heroSlide2 30s ease-in-out infinite;
+}
+
+@keyframes heroSlide1 {
+  0% {
+    opacity: 1;
+    transform: scale(1.2) translateY(0%);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-16%);
+  }
+
+  48.5% {
+    opacity: 0;
+    transform: scale(1.2) translateY(-16%);
+  }
+
+  95% {
+    opacity: 0;
+    transform: scale(1.2) translateY(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.2) translateY(0%);
+  }
+}
+
+@keyframes heroSlide2 {
+  0% {
+    opacity: 0;
+    transform: scale(1.2) translateY(0%);
+  }
+
+  45% {
+    opacity: 0;
+    transform: scale(1.2) translateY(0%);
+  }
+
+  48.5% {
+    opacity: 1;
+    transform: scale(1.2) translateY(0%);
+  }
+
+  95% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-16%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.2) translateY(-16%);
+  }
 }
 
 .hero-inner {
@@ -227,7 +296,20 @@ header a.active {
   color: var(--primary);
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--primary);
+  transition: ease-in-out .1s;
   border-radius: 25px;
+}
+
+.hero-btns a:hover, .hero button:hover, .hero-btns a:focus, .hero button:focus {
+  transition: ease-in-out .1s;
+  box-shadow: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
+  /* box-shadow: inset -1px -1px 4px var(--primary); */
+}
+
+.hero-btns a:active, .hero button:active {
+  transform: translateY(3px);
+  transition: ease-in-out .1s;
+
 }
 
 .cat-fact-section {
@@ -254,13 +336,13 @@ header a.active {
 
 #catFact {
   opacity: 1;
-  animation: fadeIn 0.5s ease-out 1 forwards;
+  /* animation: fadeIn 0.5s ease-out 1 forwards; */
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from { opacity: 0 }
   to { opacity: 1 }
-}
+} */
 
 .cat-fact-error {
   color: #950606;
@@ -270,6 +352,7 @@ header a.active {
 #factsSelect {
   background-color: var(--light);
   border-radius: 8px;
+  padding: 0.1rem 0.2rem;
 }
 
 .hero button {
@@ -306,18 +389,23 @@ header a.active {
   border-radius: 25px;
   overflow: hidden;
   height: 800px;
-  max-height: 75vh;
+  max-height: min(60vh, 500px);
   transition: transform 0.33s ease, box-shadow .33s ease;
 }
 
+/* Ensures that headshot image always crops centering around the face, not the center of the image */
+#headshot {
+  object-position: 50% 20%;
+}
+
 .card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-16px);
   box-shadow: 12px 12px 32px  var(--dark);
   z-index: 0;
 }
 
 .card-image {
-  flex: 5;
+  flex: 4;
   position: relative;
   overflow: hidden;
   border-bottom: 2px solid var(--primary);
@@ -330,6 +418,10 @@ header a.active {
 }
 
 .card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100px;
   flex: 1;
   padding: 1rem;
 }
@@ -488,10 +580,6 @@ footer p {
   font-size: clamp(0.9rem, 1vw, 2rem);
 }
 
-#footerSmall {
-  display: none;
-}
-
 /* Animation styles */
 .load-in {
   opacity: 0;
@@ -523,8 +611,59 @@ footer p {
 /* Responsive styles */
 
 @media (max-width: 480px) {
-  .hero-btns {
-    flex-direction: column;
+  /* Less motion on small screens, as due to the image's dimensions it would otherwise scroll up too far, showing empty space underneath it in the hero */
+  @keyframes heroSlide1 {
+    0% {
+      opacity: 1;
+      transform: scale(1.2) translateY(0%);
+    }
+
+    45% {
+      opacity: 1;
+      transform: scale(1.2) translateY(-8%);
+    }
+
+    48.5% {
+      opacity: 0;
+      transform: scale(1.2) translateY(-8%);
+    }
+
+    95% {
+      opacity: 0;
+      transform: scale(1.2) translateY(0%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1.2) translateY(0%);
+    }
+  }
+
+  @keyframes heroSlide2 {
+    0% {
+      opacity: 0;
+      transform: scale(1.2) translateY(0%);
+    }
+
+    45% {
+      opacity: 0;
+      transform: scale(1.2) translateY(0%);
+    }
+
+    48.5% {
+      opacity: 1;
+      transform: scale(1.2) translateY(0%);
+    }
+
+    95% {
+      opacity: 1;
+      transform: scale(1.2) translateY(-8%);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1.2) translateY(-8%);
+    }
   }
 
   /* Display alternate small footer on tiny screens */
@@ -538,8 +677,16 @@ footer p {
 }
 
 @media (max-width: 600px) {
+  .hero {
+    height: 60vh;
+  }
+
   .hero-inner {
     max-width: 90%;
+  }
+
+  .card-text {
+    text-align: center;
   }
 
   /* aboutHero will wrap*/
@@ -591,8 +738,8 @@ footer p {
 
   .mobile-toggle {
     display: block;
-    margin: 0 2rem;
-    font-size: 1.5rem;
+    margin: 0 2rem 0 auto;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     background: var(--light);
     border: 2px solid gray;
     border-radius: 50%;
@@ -612,6 +759,10 @@ footer p {
     opacity: 1;
   }
 
+  .hero {
+    height: 60vh;
+  }
+  
   #aboutHero {  
     grid-template-columns: 3fr 4fr;
   }

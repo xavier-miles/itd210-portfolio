@@ -51,6 +51,7 @@ catFactBtn.addEventListener("click", async function() {
     const response = await fetch(`https://catfact.ninja/facts?limit=${numFacts}&page=${randomPage}`);
     const data = await response.json();
 
+    //error handling
     if (!response.ok) {
       if (response.status == 404) {
         catFact.textContent = "Error: Cat fact not found (404)";
@@ -74,6 +75,7 @@ catFactBtn.addEventListener("click", async function() {
       catFactBox.textContent += factItem.fact;
       catFact.appendChild(catFactBox);
     })
+    
     factLoading.style.display = "none";
 
     catFactBtn.textContent = "Get new facts!";
