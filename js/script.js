@@ -3,7 +3,7 @@
   ITD 210 Capstone project
   script.js
 */
-
+// TO DO: Fix the Fetch grabbing more than 1 set of facts on spam clicking the Get cat facts button
 // grabbers for elements 
 const toggle = document.getElementById("mobileToggle");
 const mobileNav = document.getElementById("mobileNav");
