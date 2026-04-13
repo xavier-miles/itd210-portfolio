@@ -16,11 +16,17 @@
 
 /* design tokens for simpler color usage */
 :root {
-  --primary: #005580; /*  dark blue */
+  --primary: #005580;   /* dark blue */
   --secondary: #F7F986; /* pale yellow: accents and hover effects */
-  --dark: #013651; /* gradient and text on bg */
-  --light: #c0cad8; /* high contrast on dark */
-  --bg: #c0cad8aa; /* slightly faded --light */
+  --dark: #013651;      /* gradient and text on bg */
+  --light: #c0cad8;     /* high contrast on dark */
+  --bg: #c0cad8aa;      /* slightly faded --light */
+  /* TAILWIND COLOR APPROXIMATIONS:
+  --primary: oklch(44.3% 0.11 240.79);    sky-800
+  --secondary: oklch(94.5% 0.129 101.54); yellow-200
+  --dark: oklch(29.3% 0.066 243.157);     sky-950
+  --light: oklch(86.9% 0.022 252.894);    slate-300
+  --bg: oklch(86.9% 0.022 252.894 / .7);  slate-300/70 */
 }
 
 /* reset */
@@ -34,7 +40,6 @@ body {
   min-height: 100vh;
   background-color: var(--bg);
   font-family: 'Cabin', sans-serif;
-  color: black;
   overflow-x: hidden;
   display: grid;
   grid-template-rows: auto 1fr auto; /* pushes footer to bottom, probably */
@@ -74,7 +79,7 @@ header {
   top: 0;
   background-color: var(--primary);
   font-family: 'Montserrat', sans-serif;
-  min-height: 75px;
+  min-height: 72px;
   display: flex;
   color: var(--secondary);
   justify-content: space-between;
@@ -84,7 +89,7 @@ header {
 
 header p {
   text-decoration: underline wavy 3px;
-  font-size: clamp(1rem, 1.6vw, 3rem);
+  /* font-size: clamp(1rem, 1.6vw, 3rem); */
   font-weight: bold;
   padding: 0 1rem;
 }
@@ -111,10 +116,10 @@ header p a:hover, header p a:focus,
 
 header a.active {
   font-weight: bold;
-  padding: .375rem .75rem;
+  padding: .5rem 1rem;
   background-color: var(--secondary);
   color: var(--primary);
-  border-radius: 25px;
+  border-radius: 24px;
 }
 
 .mobile-toggle,
@@ -136,7 +141,7 @@ header a.active {
   right: 0;
   top: 70px;
   transform: translateY(-110%);
-  transition: transform .33s ease, opacity .33s ease;
+  transition: transform .3s ease, opacity .3s ease;
   pointer-events: none;
   opacity: 0;
 }
@@ -157,7 +162,7 @@ header a.active {
   font-weight: bold;
   background-color: var(--secondary);
   color: var(--primary);
-  border-radius: 25px 0 0 25px;
+  border-radius: 24px 0 0 24px;
 }
 
 /* Index page Hero section */
@@ -297,7 +302,7 @@ header a.active {
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--primary);
   transition: ease-in-out .1s;
-  border-radius: 25px;
+  border-radius: 24px;
 }
 
 .hero-btns a:hover, .hero button:hover, .hero-btns a:focus, .hero button:focus {
@@ -386,11 +391,11 @@ header a.active {
   flex-direction: column;
   background-color: white;
   border: 2px solid var(--primary);
-  border-radius: 25px;
+  border-radius: 24px;
   overflow: hidden;
   height: 800px;
   max-height: min(60vh, 500px);
-  transition: transform 0.33s ease, box-shadow .33s ease;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 /* Ensures that headshot image always crops centering around the face, not the center of the image */
@@ -467,7 +472,7 @@ header a.active {
 }
 
 #aboutHeroImgImg {
-  border-radius: clamp(25px, 2vw, 50px);
+  border-radius: clamp(24px, 2vw, 48px);
   overflow: hidden;
 }
 
@@ -479,9 +484,6 @@ header a.active {
 }
 
 #aboutHeroImg .caption {
-  font-size: clamp(0.9rem, 1vw, 2rem);
-  font-style: italic;
-  text-align: center;
   color: var(--light);
 }
 
@@ -535,7 +537,7 @@ header a.active {
 
 .about-stat {
   border: .375rem outset var(--secondary);
-  border-radius: 16px;
+  border-radius: 24px;
   background-color: var(--light);
   padding: 2% 4%;
   height: 100%;
@@ -598,7 +600,7 @@ footer p {
   opacity: 0;
   transform: translateY(16px);
   animation: loadIn 1s ease forwards;
-  animation-delay: .33s;
+  animation-delay: .3s;
 }
 
 @keyframes loadIn {
