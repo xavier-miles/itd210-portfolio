@@ -41,7 +41,7 @@ document.addEventListener("click", function(event) {
 Documentation: https://documenter.getpostman.com/view/1946054/S11HvKSz */
 const catFactBtn = document.getElementById("catFactBtn");
 const factLoading = document.getElementById("factLoading");
-const catFactMsg = document.getElementById("catFactMsg");
+// const catFactMsg = document.getElementById("catFactMsg");
 const catFact = document.getElementById("catFact");
 const factsSelect = document.getElementById("factsSelect");
 

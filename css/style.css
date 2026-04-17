@@ -1,5 +1,6 @@
 /* Work done by Xavier Miles for ITD 210 - Web Page Design II. AI-assisted code is marked and explained. */
 /* TO DO:
+  - Refactor max-width media queries into min-width for consistency
   - Figure out layout issues when on landscape orientation on mobile resolutions
   HOME PAGE: 
   - make cards float up slightly when hovered
@@ -88,6 +89,7 @@ header {
 }
 
 header p {
+  font-size: 1rem; /* matches tailwind class */
   text-decoration: underline wavy 3px;
   /* font-size: clamp(1rem, 1.6vw, 3rem); */
   font-weight: bold;
@@ -96,7 +98,8 @@ header p {
 
 /* Desktop and mobile navbar */
 .desktop-nav-links {
-  font-size: clamp(.95rem, 1.2vw, 2.5rem);
+  /* font-size: clamp(.95rem, 1.2vw, 2.5rem); */
+  font-size: 0.875rem; /* matches tailwind class */
   list-style-type: none;
   display: flex;  
   padding: 0 1rem;
@@ -124,6 +127,7 @@ header a.active {
 
 .mobile-toggle,
 #footerSmall {
+  font-size: 1rem;
   display: none;
 }
 
@@ -139,7 +143,7 @@ header a.active {
   position: fixed;
   left: 0;
   right: 0;
-  top: 70px;
+  top: 72px;
   transform: translateY(-110%);
   transition: transform .3s ease, opacity .3s ease;
   pointer-events: none;
@@ -741,7 +745,7 @@ footer p {
   .mobile-toggle {
     display: block;
     margin: 0 2rem 0 auto;
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    /* font-size: clamp(1rem, 3vw, 1.5rem); */
     background: var(--light);
     border: 2px solid gray;
     border-radius: 50%;
@@ -774,6 +778,46 @@ footer p {
   #aboutHeroImgImg img {
     max-height: 900px;
   } 
+}
+
+/* I used AI to translate the Tailwind from my Gallery page to custom CSS rulesets to make the header font sizes consistent across the site, as previously it was using clamp, which was fine but moving forward I think we're using Tailwind */
+
+@media (min-width: 640px) {
+  .mobile-toggle {
+    font-size: 1.5rem; /* sm:text-2xl */
+  }
+}
+
+@media (min-width: 768px) {
+  header p {
+    font-size: 1.25rem; /* md:text-xl */
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav-links {
+    font-size: 1rem; /* lg:text-base */
+  }
+
+  .mobile-toggle {
+    font-size: 2.25rem; /* lg:text-4xl */
+  }
+}
+
+@media (min-width: 1280px) {
+  .desktop-nav-links {
+    font-size: 1.125rem; /* xl:text-lg */
+  }
+}
+
+@media (min-width: 1536px) {
+  header p {
+    font-size: 1.5rem; /* 2xl:text-2xl */
+  }
+
+  .desktop-nav-links {
+    font-size: 1.25rem; /* 2xl:text-xl */
+  }
 }
 
 /* Prefers-reduced-motion: This code provided by Professor Gilliam */
