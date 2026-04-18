@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barcroft Pet Companion</title>
+  <meta http-equiv="Content-Security-Policy" content="
+		default-src 'self';
+		script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline';
+		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+		font-src 'self' https://fonts.gstatic.com;
+		img-src 'self' data:;
+		connect-src 'self';">
+	<title>Barcroft Pet Companion</title>
 	<!-- <link href="css/style.css" rel="stylesheet"> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +55,7 @@
 		}
 	</script>
 </head>
+<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts -->
 <!-- It took me WAY, WAY too long to convert the header/footer to Tailwind. I guess Professor Gilliam was right - Tailwind really is making my head spin and explode. -->
 <body class="min-h-[100vh] bg-bg font-cabin overflow-x-hidden grid grid-rows-[auto,1fr,auto] text-dark">
 <header class="sticky top-0 bg-primary font-montserrat min-h-[72px] flex items-center justify-between text-secondary z-[1000000]">

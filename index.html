@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barcroft Pet Companion</title>
+  <meta http-equiv="Content-Security-Policy" content="
+		default-src 'self';
+		script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline';
+		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+		font-src 'self' https://fonts.gstatic.com;
+		img-src 'self' data:;
+		connect-src 'self';">
+	<title>Barcroft Pet Companion</title>
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts -->
 <!--
 	https://tailwindcss.com/docs/installation/using-vite
 	
