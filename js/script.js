@@ -101,3 +101,30 @@ if (catFactBtn) {
     }
   });
 }
+
+//contact form functionality. Basically, when the form is submitted, the "submit" button's appearance will change to have a loading circle and say "Sending..." instead, and will be disabled, and then after a brief delay the *actual* submit will occur
+const contactForm = document.getElementById("contactForm");
+const contactSubmit = document.getElementById("contactSubmit");
+const contactSubmitText = document.getElementById("contactSubmitText");
+const contactSpinner = document.getElementById("contactSpinner");
+let submitInProgress = false;
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    //don't do a resubmit if it's already happening
+    if (submitInProgress) return;
+
+    event.preventDefault();
+
+    submitInProgress = true;
+
+    contactSubmitText.textContent = "Sending...";
+    contactSpinner.style.display = "inline-block";
+    contactSubmit.disabled = true;
+
+    //*actually* submit the form after 700ms
+    setTimeout(() => {
+      contactForm.submit();
+    }, 700);
+  })
+}

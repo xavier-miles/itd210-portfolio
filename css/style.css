@@ -1,6 +1,7 @@
 /* Work done by Xavier Miles for ITD 210 - Web Page Design II. AI-assisted code is marked and explained. */
 /* TO DO:
   - Refactor max-width media queries into min-width for consistency
+      DONE except for animation keyframe
   - Figure out layout issues when on landscape orientation on mobile resolutions
   HOME PAGE: 
   - make cards float up slightly when hovered
@@ -125,14 +126,25 @@ header a.active {
   border-radius: 24px;
 }
 
-.mobile-toggle,
-#footerSmall {
-  font-size: 1rem;
+.desktop-nav {
   display: none;
 }
 
+.mobile-toggle {
+  display: block;
+  margin: 0 2rem 0 auto;
+  font-size: 1rem;
+  /* font-size: clamp(1rem, 3vw, 1.5rem); */
+  background: var(--light);
+  border: 2px solid gray;
+  border-radius: 50%;
+  color: var(--primary);
+  cursor: pointer;
+  padding: .25rem .5rem;
+}
+
 .mobile-nav {
-  display: none;
+  display: flex;
   flex-direction: column;
   text-align: right;
   line-height: 1.5rem;
@@ -148,6 +160,13 @@ header a.active {
   transition: transform .3s ease, opacity .3s ease;
   pointer-events: none;
   opacity: 0;
+}
+
+.mobile-nav.open {
+  /* Slide into view */
+  transform: translateY(0);
+  pointer-events: auto; /* allow clicking when open */
+  opacity: 1;
 }
 
 .mobile-nav-links {
@@ -172,7 +191,7 @@ header a.active {
 /* Index page Hero section */
 .hero {
   position: relative;
-  height: 70vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,7 +308,7 @@ header a.active {
   color: var(--secondary);
   padding: 0 1rem;
   text-shadow: 0px 10px 10px var(--bg);
-  max-width: 70vw; /* stops it from taking up the entire width of the hero) */
+  max-width: 90%;
 }
 
 .hero-btns {
@@ -430,6 +449,7 @@ header a.active {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   min-height: 100px;
   flex: 1;
   padding: 1rem;
@@ -443,19 +463,37 @@ header a.active {
 }
 
 #aboutHero {
+  display: flex;
+  flex-direction: column;
   background-image: linear-gradient(to bottom, var(--primary), var(--dark));
-  display: grid;
-  grid-template-columns: 3fr 4fr;
-  grid-template-areas: "intro photo";
   align-items: center;
   z-index: 2;
   /* TO DO: figure out how to make it have a max-height of ~65vh */
 }
 
+
 #aboutHeroTxt {
   grid-area: intro;
   margin: 0 auto;
   color: var(--light);
+  text-align: center;
+  flex-direction: row;
+  height: fit-content;
+  padding: 16px 0;
+  align-content: center;
+}
+
+#aboutHeroTxt h1, #aboutHeroTxt h2 {
+  display: inline;
+  line-height: 2rem;
+}
+  
+#aboutHeroTxt h1::after {
+  content: " ";
+}
+
+.about-hero-line-2::after {
+  content: " - ";
 }
 
 /* TO DO: Consider fun font for #aboutHeroTxt h1? */
@@ -467,7 +505,7 @@ header a.active {
 
 #aboutHeroImg {
   grid-area: photo;
-  padding: 24px 0;
+  padding: 24px 0 0;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -515,10 +553,10 @@ header a.active {
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  padding: clamp(1.25rem, 2.5vw, 2.5rem);
-  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 2.5vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 2rem);
   z-index: 1;
   position: relative;
 }
@@ -550,6 +588,9 @@ header a.active {
   display: flex;
   align-items: center;
   transition: .2s ease;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .about-stat:hover {
@@ -572,6 +613,156 @@ header a.active {
   text-align: center;
 }
 
+.contact-wrapper {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.contact-atn-grab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--light);
+  border: 2px solid var(--dark);
+  border-radius: 24px;
+  padding: 1rem;
+  text-align: left;
+  gap: 1rem;
+  width: min(640px, 100%);
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.contact-form input {
+  padding: .5rem;
+  height: 2rem;
+  font-size: 1rem;
+  font-family: 'Cabin', sans-serif;
+}
+
+.contact-form fieldset {
+  border: none;
+}
+
+.contact-form legend {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.contact-fieldset-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.contact-fieldset-boxes label {
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid var(--dark);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Accessibly make the checkboxes invisible but still targetable */
+.contact-fieldset-boxes input {
+  opacity: 0;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  border: 0;
+}
+
+#contactMessage {
+  padding: .5rem;
+  font-size: 1rem;
+  resize: none;
+  font-family: 'Cabin', sans-serif;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-buttons button {
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--primary);
+  transition: ease-in-out .1s;
+  border-radius: 24px;
+}
+
+.contact-buttons button:hover, .contact-form input:focus, .contact-form textarea:focus, .contact-buttons button:focus {
+  transition: ease-in-out .1s;
+  box-shadow: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
+}
+
+/* I used AI assistance in helping me figure out how to target a selected checkbox when the checkbox is invisible (label:has(input:checked)) */
+.contact-form fieldset label:has(input:checked), .contact-form fieldset label:has(input:focus-visible) {
+  transition: ease-in-out .1s;
+  box-shadow: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
+}
+
+.contact-form fieldset label:has(input:focus-visible) {
+  transform: scale(1.05);
+}
+
+.contact-buttons button:active {
+  transform: translateY(2px) scale(.97);
+}
+
+#contactSubmit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  height: 48px;
+}
+
+#contactSubmit:disabled {
+  background-color: var(--bg);
+  cursor: not-allowed;
+}
+
+#contactSpinner {
+  display: none;
+  border: 4px solid var(--secondary);
+  border-top: 4px solid var(--dark);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: loadSpin 1s linear infinite;
+}
+
+@keyframes loadSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 footer {
   background-color: var(--dark);
   height: 50px;
@@ -584,6 +775,15 @@ footer {
 
 footer p {
   font-size: clamp(0.9rem, 1vw, 2rem);
+}
+
+/* Display alternate small footer on small screens */
+#footerSmall {
+  display: inline;
+}
+
+#footer {
+  display: none;
 }
 
 /* Animation styles */
@@ -606,6 +806,7 @@ footer p {
   animation: loadIn 1s ease forwards;
   animation-delay: .3s;
 }
+
 
 @keyframes loadIn {
   to {
@@ -671,120 +872,68 @@ footer p {
       transform: scale(1.2) translateY(-8%);
     }
   }
-
-  /* Display alternate small footer on tiny screens */
-  #footer {
-    display: none;
-  }
-
-  #footerSmall {
-    display: inline;
-  }
 }
 
-@media (max-width: 600px) {
-  .hero {
-    height: 60vh;
-  }
+/* I used AI to translate the Tailwind from my Gallery page to custom CSS rulesets to make the header font sizes consistent across the site, as previously it was using clamp, which was fine but moving forward I think we're using Tailwind.
 
-  .hero-inner {
-    max-width: 90%;
-  }
-
-  .card-text {
-    text-align: center;
-  }
-
-  /* aboutHero will wrap*/
-  #aboutHero {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #aboutHeroImg {
-    padding-bottom: 0;
-  }
-
-  #aboutHeroTxt {
-    text-align: center;
-    flex-direction: row;
-    height: 100px;
-    align-content: center;
-  }
-  
-  #aboutHeroTxt h1, #aboutHeroTxt h2 {
-    display: inline;
-    line-height: 2rem;
-  }
-  
-  #aboutHeroTxt h1::after {
-    content: " ";
-  }
-
-  .about-hero-line-2::after {
-    content: " - ";
-  }
-
-  .about-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .about-stat {
-    justify-content: center;
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 980px) { /* Mobile styles */
-  .desktop-nav {
-    display: none;
-  }
-
-  .mobile-toggle {
-    display: block;
-    margin: 0 2rem 0 auto;
-    /* font-size: clamp(1rem, 3vw, 1.5rem); */
-    background: var(--light);
-    border: 2px solid gray;
-    border-radius: 50%;
-    color: var(--primary);
-    cursor: pointer;
-    padding: .25rem .5rem;
-  }
-
-  .mobile-nav {
-    display: flex;
-  }
-  
-  .mobile-nav.open {
-    /* Slide into view */
-    transform: translateY(0);
-    pointer-events: auto; /* allow clicking when open */
-    opacity: 1;
-  }
-
-  .hero {
-    height: 60vh;
-  }
-  
-  #aboutHero {  
-    grid-template-columns: 3fr 4fr;
-  }
-}
-
-@media (min-width: 3000px) {
-  #aboutHeroImgImg img {
-    max-height: 900px;
-  } 
-}
-
-/* I used AI to translate the Tailwind from my Gallery page to custom CSS rulesets to make the header font sizes consistent across the site, as previously it was using clamp, which was fine but moving forward I think we're using Tailwind */
+The rest of the media query work was done by me. I converted it from max-width to min-width and moved the rules into base, so it's mobile-first. */
 
 @media (min-width: 640px) {
   .mobile-toggle {
     font-size: 1.5rem; /* sm:text-2xl */
+  }
+  
+  .hero-inner {
+    max-width: 70vw; /* stops it from taking up the entire width of the hero) */
+  }
+
+  .card-text {
+    text-align: left;
+  }
+  
+  /* aboutHero will wrap*/
+  #aboutHero {
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    grid-template-areas: "intro photo";
+  }
+
+  #aboutHeroImg {
+    padding: 24px 0;
+  }
+  
+  #aboutHeroTxt {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    flex-direction: column;
+  }
+
+  #aboutHeroTxt h1::after {
+    content: "";
+  }
+
+  .about-hero-line-2::after {
+    content: "";
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .about-stat {
+    justify-content: flex-start;
+    width: auto;
+    margin: 0;
+  }
+
+  #footerSmall {
+    display: none;
+  }
+
+  #footer {
+    display: inline;
   }
 }
 
@@ -792,15 +941,49 @@ footer p {
   header p {
     font-size: 1.25rem; /* md:text-xl */
   }
+
+  .contact-fieldset-boxes {
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 1024px) {
+  .desktop-nav {
+    display: block;
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
   .desktop-nav-links {
     font-size: 1rem; /* lg:text-base */
   }
 
-  .mobile-toggle {
-    font-size: 2.25rem; /* lg:text-4xl */
+  .hero {
+    height: 70vh;
+  }
+  
+  .contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .contact-atn-grab {
+    width: 30%;
+  }
+
+  .contact-form {
+    width: 640px;
+  }
+
+  .contact-fieldset-boxes {
+    flex-direction: row;
   }
 }
 
@@ -819,6 +1002,13 @@ footer p {
     font-size: 1.25rem; /* 2xl:text-xl */
   }
 }
+
+@media (min-width: 3000px) {
+  #aboutHeroImgImg img {
+    max-height: 900px;
+  } 
+}
+
 
 /* Prefers-reduced-motion: This code provided by Professor Gilliam */
 @media (prefers-reduced-motion: reduce) {

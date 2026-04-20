@@ -6,3 +6,6 @@ The topic of my portfolio is my animal care business I run in my neighborhood. T
 Using HTML5, CSS3, and JS
 
 Project done for ITD 210: Web Page Design II in 2026 Spring semester
+
+(Due 4/20/2026) Milestone 3: Page 3
+Worked on the Contact page, implementing a responsive form with subtle interactivity and integrated with Formspree for submission functionality.

@@ -44,20 +44,53 @@
 </nav>
 
 <main>
-	<form class="contact-form" action="https://formspree.io/f/maqajyln" method="POST">
-		<label for="contactName">Your name</label>
-		<input type="text" id="contactName" name="name" required>
+	<div class="contact-wrapper">
+		<section class="contact-atn-grab">
+			<h2>Ready to reach out and ask for a booking?</h2>
+			<p>Fill out the form with the appropriate details and submit, and I'll get back to you as soon as I can!</p>
+		</section>
+		<form class="contact-form" id="contactForm" action="https://formspree.io/f/maqajyln" method="POST">
+			<label for="contactName">Your name</label>
+			<input type="text" id="contactName" name="name" required aria-required="true">
 
-		<label for="emailPhone">Email/Phone</label>
-		<input id="emailPhone" name="emailPhone" required>
+			<label for="emailPhone">Email/Phone</label>
+			<input id="emailPhone" name="emailPhone" required aria-required="true">
+			
+			<label for="startDate">Services needed starting when?</label>
+			<input id="startDate" name="startDate" type="date">
 
-		<label for="contactMessage">Message</label>
-		<textarea id="contactMessage" name="message" placeholder="Describe the services you're looking for" required></textarea>
+			<fieldset>
+				<legend>What care are you looking for?</legend>
+				<div class="contact-fieldset-boxes">
+					<label>
+						<input type="checkbox" name="serviceType[]" value="walks">Dog walks
+					</label>
+					<label>
+						<input type="checkbox" name="serviceType[]" value="sittingShort">Dog sitting (short)
+					</label>
+					<label>
+						<input type="checkbox" name="serviceType[]" value="sittingLong">Dog sitting (overnight)
+					</label>
+					<label>
+						<input type="checkbox" name="serviceType[]" value="cat">Cat care
+					</label>
+					<label>
+						<input type="checkbox" name="serviceType[]" value="other">Other (describe)
+					</label>
+				</div>
+			</fieldset>
 
-		<div class="contact-buttons">
-			<button type="submit" id="contactSubmit">Send your message</button>
-		</div>
-	</form>
+			<label for="contactMessage">Message</label>
+			<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-describedby="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-required="true" required></textarea>
+
+			<div class="contact-buttons">
+				<button type="submit" id="contactSubmit">
+					<div id="contactSpinner"></div>
+					<div id="contactSubmitText">Submit your request</div>
+				</button>
+			</div>
+		</form>
+	</div>
 </main>
 
 <footer>

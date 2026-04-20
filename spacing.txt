@@ -1,5 +1,5 @@
 REMEMBER -- Tailwind uses multiples of 4 for its spacing
-32px - gap between cards on Home
+32px - gap between cards on Home and between most items, standard page padding
 16px - horizontal padding for text on desktop navbar (links + )
 12px 24px - vertical/horizontal padding for main buttons
 24px - border radius for boxes/buttons/cards
