@@ -4,8 +4,6 @@
       DONE except for animation keyframe
   - Figure out layout issues when on landscape orientation on mobile resolutions
   HOME PAGE: 
-  - make cards float up slightly when hovered
-  - make hero buttons animate somehow when hovered
   - work on very large screen size settings? not a priority as much as getting the layout/content down right.
       Halfway there - convert px values to rem and adjust clamps
   - Make Cat Fact fade out/in when the fact changes
@@ -14,6 +12,10 @@
   ABOUT PAGE:
   - tighten spacing
   - test hero text at larger sizes (h1 is kinda big on my 1440p monitor)
+
+  COMPLETED:
+  - make cards float up slightly when hovered
+  - make hero buttons animate somehow when hovered
 */
 
 /* design tokens for simpler color usage */
@@ -455,6 +457,7 @@ header a.active {
   padding: 1rem;
 }
 
+/* About page styles */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -613,6 +616,7 @@ header a.active {
   text-align: center;
 }
 
+/* Contact page styles */
 .contact-wrapper {
   padding: 2rem;
   height: 100%;
@@ -671,6 +675,7 @@ header a.active {
   gap: 1rem;
 }
 
+/* Style the checkboxes so that the selectable item appears as a card/box instead of a checkbox */
 .contact-fieldset-boxes label {
   font-weight: normal;
   display: flex;
