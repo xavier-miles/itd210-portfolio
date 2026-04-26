@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="
 		default-src 'self';
-		script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline';
-		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+		script-src 'self' https://cdn.tailwindcss.com;
+		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
 		font-src 'self' https://fonts.gstatic.com;
 		img-src 'self' data:;
-		connect-src 'self';">
+		connect-src 'self' https://catfact.ninja;
+		object-src 'none';
+		frame-ancestors 'none';">
 	<title>Barcroft Pet Companion</title>
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts -->
+<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <!--
 	https://tailwindcss.com/docs/installation/using-vite
 	
@@ -50,8 +52,8 @@
 <main>
 	<section class="hero">
 		<div class="hero-media">
-			<img src="media/bridge_view.jpg" class="hero-img hero-img1" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
-			<img src="media/bridge_view.jpg" class="hero-img hero-img2" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
+			<img src="media/bridge_view.webp" class="hero-img hero-img1" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
+			<img src="media/bridge_view.webp" class="hero-img hero-img2" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
 		</div>
 		<div class="hero-inner">
 			<div class="hero-text">
@@ -60,7 +62,7 @@
 			</div>
 			<div class="hero-btns load-in-delay-2">
 				<a href="services.html" class="cta-btn">View services</a>
-				<a href="contact.html" class="cta-btn">Book now</a>
+				<a href="contact.html" class="cta-btn">Request a booking now</a>
 			</div>
 			<div class="cat-fact-section load-in-delay-2">
 				<div class="cat-options">

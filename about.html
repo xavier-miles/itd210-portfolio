@@ -5,11 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Security-Policy" content="
 		default-src 'self';
-		script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline';
-		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+		script-src 'self' https://cdn.tailwindcss.com;
+		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
 		font-src 'self' https://fonts.gstatic.com;
 		img-src 'self' data:;
-		connect-src 'self';">
+		connect-src 'self' https://catfact.ninja;
+		object-src 'none';
+		frame-ancestors 'none';">
 	<title>Barcroft Pet Companion</title>
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +19,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts -->
+<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <body>
 <!-- desktop navigation -->
 <header>

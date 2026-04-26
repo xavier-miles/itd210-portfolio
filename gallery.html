@@ -5,57 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="
 		default-src 'self';
-		script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline';
-		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+		script-src 'self' https://cdn.tailwindcss.com;
+		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
 		font-src 'self' https://fonts.gstatic.com;
 		img-src 'self' data:;
-		connect-src 'self';">
+		connect-src 'self' https://catfact.ninja;
+		object-src 'none';
+		frame-ancestors 'none';">
 	<title>Barcroft Pet Companion</title>
 	<!-- <link href="css/style.css" rel="stylesheet"> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	<style>
-		/* I apparently need the one custom css ruleset because Tailwind can't target the open class. The mobile navbar doesn't work without this */
-		/* #mobileNav.open {
-			transform: translateY(0);
-			pointer-events: auto;
-			opacity: 1;
-		} */
-		/* this turned out not to be true - I realized that I could use javascript to toggle these classes */
-	</style>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<script>
-		//sets Tailwind custom colors, fonts
-		tailwind.config = {
-			theme: {
-				extend: {
-					colors: {
-						primary: '#005580',
-						secondary: '#F7F986',
-						dark: '#013651',
-						light: '#c0cad8',
-						bg: '#c0cad8aa',
-					},
-					fontFamily: {
-						montserrat: ['Montserrat', 'sans-serif'],
-						cabin: ['Cabin', 'sans-serif'],
-					},
-					fontSize: {
-						h1: 'clamp(1.625rem, 3.5vw, 4.5rem)',
-						h2: 'clamp(1.5rem, 2vw, 3.5rem)',
-						p: 'clamp(1rem, 1.2vw, 2.5rem)',
-						caption: 'clamp(0.9rem, 1vw, 2rem)',
-					},
-					boxShadow: {
-						'hover': '0px 0px 32px #013651',
-					}
-				}
-			}
-		}
-	</script>
+	<script src="js/tailwind-config.js"></script>
 </head>
-<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts -->
+<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <!-- It took me WAY, WAY too long to convert the header/footer to Tailwind. I guess Professor Gilliam was right - Tailwind really is making my head spin and explode. -->
 <body class="min-h-[100vh] bg-bg font-cabin overflow-x-hidden grid grid-rows-[auto,1fr,auto] text-dark">
 <header class="sticky top-0 bg-primary font-montserrat min-h-[72px] flex items-center justify-between text-secondary z-[1000000]">

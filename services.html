@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="
 		default-src 'self';
-		script-src 'self' https://cdn.tailwindcss.com 'unsafe-inline';
-		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+		script-src 'self' https://cdn.tailwindcss.com;
+		style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
 		font-src 'self' https://fonts.gstatic.com;
 		img-src 'self' data:;
-		connect-src 'self';">
+		connect-src 'self' https://catfact.ninja;
+		object-src 'none';
+		frame-ancestors 'none';">
 	<title>Barcroft Pet Companion</title>
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts -->
+<!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <body>
 <header>
 	<p><a href="index.html">Barcroft Pet Companion</a></p>
@@ -44,7 +46,41 @@
 </nav>
 
 <main>
-	<h1>Content goes here</h1>
+	<div class="services-wrapper">
+		<div class="background-controls">
+			<button id="backgroundMute">
+				🔇
+			</button>
+		</div>
+		<video src="https://www.youtube.com/watch?v=QxIxSDRhGzc">
+			<!-- video thanking the user from showing interest in my services, saying "On this page you can find a breakdown of all my services" - probably set at Beach 4 -->
+
+		</video>
+		
+		<section class="services-list">
+			<h1>Services</h1>
+			<div class="service">
+				<h2>Dog walking</h2>
+				<p>30-minute walk for $17<br>+$3 per additional dog</p>
+			</div>
+			<div class="service">
+				<h2>Dog walking</h2>
+				<p>30-minute walk for $17<br>+$3 per additional dog</p>
+			</div>
+			<div class="service">
+				<h2>Dog walking</h2>
+				<p>30-minute walk for $17<br>+$3 per additional dog</p>
+			</div>
+			<div class="service">
+				<h2>Dog walking</h2>
+				<p>30-minute walk for $17<br>+$3 per additional dog</p>
+			</div>
+			<div class="service">
+				<h2>Dog walking</h2>
+				<p>30-minute walk for $17<br>+$3 per additional dog</p>
+			</div>
+		</section>
+	</div>
 </main>
 
 <footer>
