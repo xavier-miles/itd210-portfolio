@@ -3,19 +3,22 @@
   - Refactor max-width media queries into min-width for consistency
       DONE except for animation keyframe
   - Figure out layout issues when on landscape orientation on mobile resolutions
+  - Make spacing more consistent on every page
+  - Double-check color contrast
   HOME PAGE: 
-  - work on very large screen size settings? not a priority as much as getting the layout/content down right.
+  - work on very large screen size settings? not as much a priority as getting the layout/content down right.
       Halfway there - convert px values to rem and adjust clamps
   - Make Cat Fact fade out/in when the fact changes
   - Figure it out how RARELY the cat facts will go off the bottom of the hero.
   - Figure out how to extra randomize the cat facts
   ABOUT PAGE:
   - tighten spacing
-  - test hero text at larger sizes (h1 is kinda big on my 1440p monitor)
+  - test hero text at more sizes (h1 is kinda big on my 1440p monitor)
 
   COMPLETED:
   - make cards float up slightly when hovered
   - make hero buttons animate somehow when hovered
+  - fix index card image/text proportions
 */
 
 /* design tokens for simpler color usage */
@@ -25,6 +28,8 @@
   --dark: #013651;      /* gradient and text on bg */
   --light: #c0cad8;     /* high contrast on dark */
   --bg: #c0cad8aa;      /* slightly faded --light */
+
+  --button-hover: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
   /* TAILWIND COLOR APPROXIMATIONS:
   --primary: oklch(44.3% 0.11 240.79);    sky-800
   --secondary: oklch(94.5% 0.129 101.54); yellow-200
@@ -190,6 +195,7 @@ header a.active {
   border-radius: 24px 0 0 24px;
 }
 
+/* Home page styles */
 /* Index page Hero section */
 .hero {
   position: relative;
@@ -320,26 +326,26 @@ header a.active {
   justify-content: center;
 }
 
-.hero-btns a, .hero button {
+.hero-btns a, button {
   text-decoration: none;
   background-color: var(--secondary);
   color: var(--primary);
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--primary);
-  transition: ease-in-out .1s;
   border-radius: 24px;
+  transition: ease-in-out .1s;
 }
 
-.hero-btns a:hover, .hero button:hover, .hero-btns a:focus, .hero button:focus {
+.hero-btns a:hover, .hero-btns a:focus,
+button:hover, button:focus,
+.contact-form input:focus, .contact-form textarea:focus {
   transition: ease-in-out .1s;
-  box-shadow: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
-  /* box-shadow: inset -1px -1px 4px var(--primary); */
+  box-shadow: var(--button-hover);
 }
 
-.hero-btns a:active, .hero button:active {
-  transform: translateY(3px);
+.hero-btns a:active, button:active {
+  transform: translateY(2px) scale(.97);
   transition: ease-in-out .1s;
-
 }
 
 .cat-fact-section {
@@ -381,11 +387,12 @@ header a.active {
 
 #factsSelect {
   background-color: var(--light);
+  font-family: 'Cabin', sans-serif;
   border-radius: 8px;
   padding: 0.1rem 0.2rem;
 }
 
-.hero button {
+.cat-fact-section button, .background-controls button {
   font-family: 'Cabin', sans-serif;
   padding: 0.375rem .5rem;
   cursor: pointer;
@@ -488,7 +495,7 @@ header a.active {
 
 #aboutHeroTxt h1, #aboutHeroTxt h2 {
   display: inline;
-  line-height: 2rem;
+  line-height: clamp(2rem, 3.5vw, 4rem);
 }
   
 #aboutHeroTxt h1::after {
@@ -616,6 +623,83 @@ header a.active {
   text-align: center;
 }
 
+/* Services page styles */
+.services-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.background-controls {
+  position: fixed;
+  top: 88px;
+  right: 16px;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  border: .375rem outset var(--secondary);
+  border-radius: 24px;
+  background: var(--light);
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  margin: 0 auto;
+  gap: 32px;
+  text-align: center;
+}
+
+.service {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service h2 {
+  text-align: center;
+}
+
+.service details {
+  width: 100%;
+}
+
+/* Makes the service expand arrow stick to the left and stay inline with the text. These rulesets also make the text align well and not cause weird jumps or expansions upon opening/closing the details */
+.service summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.service-summary {
+  display: block;
+}
+
+.service-details {
+  text-align: center;
+}
+
+.service summary::before {
+  content: "▶";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease all;
+}
+
+.service details[open] summary::before {
+  transform: rotate(90deg);
+}
+
 /* Contact page styles */
 .contact-wrapper {
   padding: 2rem;
@@ -712,31 +796,16 @@ header a.active {
 .contact-buttons button {
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-  background-color: var(--secondary);
-  color: var(--primary);
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--primary);
-  transition: ease-in-out .1s;
-  border-radius: 24px;
-}
-
-.contact-buttons button:hover, .contact-form input:focus, .contact-form textarea:focus, .contact-buttons button:focus {
-  transition: ease-in-out .1s;
-  box-shadow: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
 }
 
 /* I used AI assistance in helping me figure out how to target a selected checkbox when the checkbox is invisible (label:has(input:checked)) */
 .contact-form fieldset label:has(input:checked), .contact-form fieldset label:has(input:focus-visible) {
   transition: ease-in-out .1s;
-  box-shadow: inset 1px 1px 4px var(--primary), inset -1px -1px 4px var(--primary), 1px 1px 4px var(--primary), -1px -1px 4px var(--primary);
+  box-shadow: var(--button-hover);
 }
 
 .contact-form fieldset label:has(input:focus-visible) {
   transform: scale(1.05);
-}
-
-.contact-buttons button:active {
-  transform: translateY(2px) scale(.97);
 }
 
 #contactSubmit {

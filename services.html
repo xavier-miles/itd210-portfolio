@@ -45,41 +45,74 @@
 	</ul>
 </nav>
 
+<!-- Attribution:
+	Background SFX: https://pixabay.com/sound-effects/nature-park-6026/ -->
 <main>
 	<div class="services-wrapper">
 		<div class="background-controls">
-			<button id="backgroundMute">
-				🔇
-			</button>
+			<button id="backgroundMute">🔇</button>
 		</div>
 		<video src="https://www.youtube.com/watch?v=QxIxSDRhGzc">
 			<!-- video thanking the user from showing interest in my services, saying "On this page you can find a breakdown of all my services" - probably set at Beach 4 -->
 
 		</video>
 		
-		<section class="services-list">
-			<h1>Services</h1>
-			<div class="service">
+		<h1 class="services-header">Services</h1>
+			<!-- use <details> <summary> for animated expanding information -->
+		<ul class="services-list">
+			<li class="service">
 				<h2>Dog walking</h2>
-				<p>30-minute walk for $17<br>+$3 per additional dog</p>
-			</div>
-			<div class="service">
-				<h2>Dog walking</h2>
-				<p>30-minute walk for $17<br>+$3 per additional dog</p>
-			</div>
-			<div class="service">
-				<h2>Dog walking</h2>
-				<p>30-minute walk for $17<br>+$3 per additional dog</p>
-			</div>
-			<div class="service">
-				<h2>Dog walking</h2>
-				<p>30-minute walk for $17<br>+$3 per additional dog</p>
-			</div>
-			<div class="service">
-				<h2>Dog walking</h2>
-				<p>30-minute walk for $17<br>+$3 per additional dog</p>
-			</div>
-		</section>
+				<div class="service-description">
+					<details>
+						<summary>
+							<span class="service-summary">30-minute rate: $17<br>60-minute rate: $27<br><i>$3 per additional dog for all rates</i></span>
+						</summary>
+						<div class="service-details">
+							<p>Includes feeding</p>
+						</div>
+					</details>
+				</div>
+			</li>
+			<li class="service">
+				<h2>Dog sitting (&lt;1 day)</h2>
+				<div class="service-description">
+					<details>
+						<summary>
+							<span class="service-summary">$17/hr</span>
+						</summary>
+						<div class="service-details">
+							<p>Caps at the full-day sitting rate<br>Includes all care needs for the duration</p>
+						</div>
+					</details>
+				</div>
+			</li>
+			<li class="service">
+				<h2>Dog sitting (overnight)</h2>
+				<div class="service-description">
+					<details>
+						<summary>
+							<span class="service-summary">$60 - $75/day</span>
+						</summary>
+						<div class="service-details">
+							<p>Varies depending on number of animals and complexity of care required</p>
+						</div>
+					</details>
+				</div>
+			</li>
+			<li class="service">
+				<h2>Cat care</h2>
+				<div class="service-description">
+					<details>
+						<summary>
+							<span class="service-summary">$16 per visit<br><i>$3 per additional cat</i></span>
+						</summary>
+						<div class="service-details">
+							<p>Contact for details</p>
+						</div>
+					</details>
+				</div>
+			</li>
+		</ul>
 	</div>
 </main>
 
