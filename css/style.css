@@ -73,8 +73,12 @@ h2 {
   font-size: clamp(1.5rem, 2vw, 3.5rem);
 }
 
+h3 {
+  font-size: clamp(1.3rem, 1.65vw, 2.5rem);
+}
+
 p {
-  font-size: clamp(1rem, 1.2vw, 2.5rem);
+  font-size: clamp(1rem, 1.25vw, 2rem);
 }
 
 a:hover, a:focus,
@@ -326,7 +330,7 @@ header a.active {
   justify-content: center;
 }
 
-.hero-btns a, button {
+.hero-btns a, button, .service a {
   text-decoration: none;
   background-color: var(--secondary);
   color: var(--primary);
@@ -336,9 +340,12 @@ header a.active {
   transition: ease-in-out .1s;
 }
 
+
+/* I used AI assistance in helping me figure out how to target a selected checkbox when the checkbox is invisible (label:has(input:checked)) */
 .hero-btns a:hover, .hero-btns a:focus,
 button:hover, button:focus,
-.contact-form input:focus, .contact-form textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus,
+.contact-form fieldset label:has(input:checked), .contact-form fieldset label:has(input:focus-visible) {
   transition: ease-in-out .1s;
   box-shadow: var(--button-hover);
 }
@@ -403,18 +410,15 @@ button:hover, button:focus,
 /* Cards section */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   padding: 2rem;
   gap: 2rem;
 }
 
 .cards a {
   text-decoration: none;
+  transition: transform .3s ease, box-shadow .3s ease;
   color: inherit;
-}
-
-.card a:focus, .card a:hover {
-  text-decoration: underline wavy;
 }
 
 .card {
@@ -435,10 +439,11 @@ button:hover, button:focus,
   object-position: 50% 20%;
 }
 
-.card:hover {
+.card:hover, .cards a:focus {
   transform: translateY(-16px);
   box-shadow: 12px 12px 32px  var(--dark);
   z-index: 0;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .card-image {
@@ -524,7 +529,7 @@ button:hover, button:focus,
 }
 
 #aboutHeroImgImg {
-  border-radius: clamp(24px, 2vw, 48px);
+  border-radius: 24px;
   overflow: hidden;
 }
 
@@ -627,7 +632,17 @@ button:hover, button:focus,
 .services-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding: 32px;
+}
+
+.sfx-caption {
+  font-size: clamp(0.75rem, 1vw, 1.2rem);
+  position: relative;
+  top: -24px;
+  color: var(--dark);
+  max-width: calc(100% - 64px);
 }
 
 .background-controls {
@@ -637,22 +652,41 @@ button:hover, button:focus,
 }
 
 .services-header {
-  text-align: center;
   margin-bottom: 32px;
+}
+
+.services-video {
+  overflow: hidden;
+  max-height: 75vh;
+  max-width: 800px;
+  border-radius: 8px;
+  aspect-ratio: 16/9;
+}
+
+.services-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .services-list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 16px;
   border: .375rem outset var(--secondary);
   border-radius: 24px;
   background: var(--light);
   align-items: center;
   width: 100%;
   padding: 16px;
-  margin: 0 auto;
-  gap: 32px;
-  text-align: center;
+  gap: 16px;
+}
+
+/* breaks up the options into nice "boxes" without requiring a table */
+.services-list hr {
+  height: 2px;
+  width: calc(100% + 32px);
+  border-color: var(--primary);
 }
 
 .service {
@@ -660,15 +694,31 @@ button:hover, button:focus,
   max-width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 8px;
   align-items: center;
+  transition: .2s;
 }
 
-.service h2 {
-  text-align: center;
+.service:hover{
+  text-shadow: 4px 4px 16px var(--primary);
 }
 
-.service details {
-  width: 100%;
+.service a {
+  font-size: clamp(0.9rem, 1vw, 2rem);
+  padding: 0.25rem .5rem;
+  text-shadow: none;
+  width: fit-content;
+}
+
+.service a:hover, .service a:focus {
+  box-shadow: var(--button-hover);
+}
+
+.service-name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
 }
 
 /* Makes the service expand arrow stick to the left and stay inline with the text. These rulesets also make the text align well and not cause weird jumps or expansions upon opening/closing the details */
@@ -680,14 +730,6 @@ button:hover, button:focus,
   width: 100%;
 }
 
-.service-summary {
-  display: block;
-}
-
-.service-details {
-  text-align: center;
-}
-
 .service summary::before {
   content: "▶";
   display: flex;
@@ -696,8 +738,16 @@ button:hover, button:focus,
   transition: 0.3s ease all;
 }
 
+.service-summary, .service summary::before {
+  cursor: pointer;
+}
+
 .service details[open] summary::before {
   transform: rotate(90deg);
+}
+
+.cancellation {
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
 }
 
 /* Contact page styles */
@@ -796,12 +846,6 @@ button:hover, button:focus,
 .contact-buttons button {
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-}
-
-/* I used AI assistance in helping me figure out how to target a selected checkbox when the checkbox is invisible (label:has(input:checked)) */
-.contact-form fieldset label:has(input:checked), .contact-form fieldset label:has(input:focus-visible) {
-  transition: ease-in-out .1s;
-  box-shadow: var(--button-hover);
 }
 
 .contact-form fieldset label:has(input:focus-visible) {
@@ -1002,6 +1046,10 @@ The rest of the media query work was done by me. I converted it from max-width t
     margin: 0;
   }
 
+  .services-list {
+    width: min(100%, 640px);
+  }
+
   #footerSmall {
     display: none;
   }
@@ -1052,12 +1100,32 @@ The rest of the media query work was done by me. I converted it from max-width t
     width: 30%;
   }
 
-  .contact-form {
-    width: 640px;
-  }
-
   .contact-fieldset-boxes {
     flex-direction: row;
+  }
+
+  .services-list {
+    width: 75%;
+  }
+
+  .service {
+    flex-direction: row;
+  }
+
+  .service-name {
+    flex-direction: row;
+    width: 50%;
+    text-align: left;
+    display: flex;
+    gap: 8px;
+  }
+
+  .service-description {
+    width: 50%;
+  }
+
+  .services-wrapper .cancellation {
+    width: 75%;
   }
 }
 
@@ -1074,6 +1142,11 @@ The rest of the media query work was done by me. I converted it from max-width t
 
   .desktop-nav-links {
     font-size: 1.25rem; /* 2xl:text-xl */
+  }
+  
+  .services-video {
+    width: 100%;
+    max-width: 1120px;
   }
 }
 

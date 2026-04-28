@@ -128,3 +128,46 @@ if (contactForm) {
     }, 700);
   })
 }
+
+// Receive data from URL passed from Services page booking click
+
+/* I used AI to figure out how to target the clicked service and send that to a query param.
+I knew I had to pass data from one page to another and knew how to select the checkbox on the destination page (contact.html) but I didn't know about data-service or how to use it, or about URLSearchParams specifically */
+const params = new URLSearchParams(window.location.search);
+const selectedService = params.get("service");
+
+if (selectedService) {
+  const checkbox = document.querySelector(`input[name="serviceType[]"][value="${selectedService}"]`);
+
+  if (checkbox) {
+    checkbox.checked = true;
+  }
+}
+
+//Services page functionality
+const bgMute = document.getElementById("bgMute");
+const servicesBg = document.getElementById("servicesBg");
+const servicesIntro = document.getElementById("servicesIntro");
+let bgIsMuted = true;
+
+// Mute the background SFX when the video is played 
+if (servicesIntro) {
+  servicesIntro.addEventListener("play", () => {
+    servicesBg.muted = true;
+    bgIsMuted = true;
+    bgMute.textContent = "🔇";
+  });
+}
+
+// mute / unmute bg button
+if (bgMute) {
+  bgMute.addEventListener("click", () => {
+    if (!bgIsMuted) {
+      bgMute.textContent = "🔇";
+    } else {
+      bgMute.textContent = "🔊";
+    }
+    servicesBg.muted = !bgIsMuted;
+    bgIsMuted = !bgIsMuted;
+  });
+}
