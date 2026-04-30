@@ -9,20 +9,26 @@ const toggle = document.getElementById("mobileToggle");
 const mobileNav = document.getElementById("mobileNav");
 const header = document.querySelector("header")
 
-// listening to the burger [menu button] to open/close it
+// listening to the burger [menu button] to open/close it and changes from ☰ to X
 toggle.addEventListener("click", () => {
   mobileNav.classList.toggle("-translate-y-full");
   mobileNav.classList.toggle("pointer-events-none");
   mobileNav.classList.toggle("opacity-0");
+  
   toggle.classList.toggle("bg-secondary");
   const isOpen = mobileNav.classList.toggle("open");
   toggle.setAttribute("aria-expanded", String(isOpen));
+  
   if (!mobileNav.classList.contains("open")) {
     toggle.style.background = "#c0cad8";
-  } else toggle.style.background = "#F7F986";
+    toggle.textContent = "☰";
+  } else {
+    toggle.style.background = "#F7F986";
+    toggle.textContent = "✖";
+  }
 });
 
-//checks if you click NOT on the mobile nav, NOT on the header, and then closes the mobile nav if so 
+//checks if you click NOT on the mobile nav, NOT on the header, and then closes the mobile nav if so and changes from ☰ to X
 document.addEventListener("click", function(event) {
   if (!mobileNav.contains(event.target)
   && !header.contains(event.target)
@@ -30,9 +36,12 @@ document.addEventListener("click", function(event) {
     mobileNav.classList.toggle("-translate-y-full");
     mobileNav.classList.toggle("pointer-events-none");
     mobileNav.classList.toggle("opacity-0");
+    
     toggle.classList.toggle("bg-secondary");
     toggle.style.background = "#c0cad8";
     toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "☰";
+    
     mobileNav.classList.remove("open");
   }
 });
@@ -107,14 +116,78 @@ const contactForm = document.getElementById("contactForm");
 const contactSubmit = document.getElementById("contactSubmit");
 const contactSubmitText = document.getElementById("contactSubmitText");
 const contactSpinner = document.getElementById("contactSpinner");
+
+const contactName = document.getElementById("contactName");
+const contactContact = document.getElementById("contactContact");
+const contactMessage = document.getElementById("contactMessage");
+
+const nameError = document.getElementById("nameError");
+const contactError = document.getElementById("contactError");
+const messageError = document.getElementById("messageError");
+
+const messageLength = document.getElementById("messageLength");
+
 let submitInProgress = false;
 
 if (contactForm) {
+  contactMessage.addEventListener("input", () => {
+    const length = contactMessage.value.length;
+    
+    if (length > 400 || length < 30) {
+      messageLength.style.color = "#6a0f0f";
+    } else if (length > 350) {
+      messageLength.style.color = "#7a3f00"; 
+    } else messageLength.style.color = "#013651";
+
+    messageLength.textContent = `${length} / 400`;
+  })
+  
   contactForm.addEventListener("submit", (event) => {
+    //don't submit lol
+    event.preventDefault();
+
+    let isFormValid = true;
+
+    //reset errors if there are any 
+    nameError.textContent = "";
+    contactError.textContent = "";
+    messageError.textContent = "";
+    messageLength.style.color = "#013651";
+
+    //check if name is blank
+    if (contactName.value == "") {
+      isFormValid = false;
+      nameError.textContent = "Name cannot be blank";
+    }
+
+    // I used AI for the regex pattern of Email OR phone number xxxxxxxxx OR xxx-xxx-xxxx
+    // Check if contact info is blank or doesn't match accepted formats
+    const contactRegex = /^(?:[^\s@]+@[^\s@]+\.[^\s@]+|\d{10}|\d{3}-\d{3}-\d{4})$/;
+    if (contactContact.value == "") {
+      isFormValid = false;
+      contactError.textContent = "Contact information cannot be blank";
+    } else if (!contactRegex.test(contactContact.value)) {
+      isFormValid = false;
+      contactError.textContent = "Input valid email, or phone as 1234567890 or 123-456-7890"
+    }
+
+    //check if message is empty, too short, or too long
+    if (contactMessage.value == "") {
+      isFormValid = false;
+      messageError.textContent = "Please enter a message - include start date, duration needed and anything relevant!";
+    } else if (contactMessage.value.length < 30) {
+      isFormValid = false;
+      messageError.textContent = "Please enter more information - it helps me understand your needs and serve you better!";
+    } else if (contactMessage.value.length > 400) {
+      isFormValid = false;
+      messageError.textContent = "Message too long."
+    }
+
+    //check validity!
+    if (!isFormValid) return;
+
     //don't do a resubmit if it's already happening
     if (submitInProgress) return;
-
-    event.preventDefault();
 
     submitInProgress = true;
 
@@ -171,3 +244,12 @@ if (bgMute) {
     bgIsMuted = !bgIsMuted;
   });
 }
+
+// Testimonials page
+const testQuotes = document.querySelectorAll(".testimonial-quote");
+
+testQuotes.forEach((quote) => {
+  quote.addEventListener("click", () => {
+    quote.classList.toggle("expanded");
+  });
+});

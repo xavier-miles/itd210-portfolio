@@ -32,7 +32,7 @@
 			<li><a href="contact.html">Contact me</a></li>
 		</ul>
 	</nav>
-	<button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+	<button class="mobile-toggle" id="mobileToggle" aria-label="Open nav menu">☰</button>
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links">
@@ -46,7 +46,80 @@
 </nav>
 
 <main>
-	<h1>Content goes here</h1>
+	<!-- testimonials zig-zagged left, right, left, right -->
+	<div class="testimonial-wrapper">
+		<section class="testimonial-intro">
+			<h1>Testimonials</h1>
+			<p>Don't just take my word for it - here's what some of my clients have to say about my services.</p>
+		</section>
+		<!--
+			.testimonials 							= the section
+		 	.testimonial-l/r/top/bottom	= left/right aligned, top/bottom margin fixes 
+			.testimonial								= individual testimonial content
+			.testimonial-images-cage		= holds image(s), needed because some testimonials may have more than one image
+			.testimonial-image 					= image controller
+			.full-quote									= allows expansion for lengthy quotes
+			.quote-author								= lets me ensure no wrapping will happen
+			
+			I know it's a bit of "div soup" but this works and it's the best solution I came up with.
+		-->
+		<section class="testimonials">
+			<div class="testimonial-l">
+				<article class="testimonial" tabindex="0">
+					<div class="testimonial-images-cage">
+						<div class="testimonial-image">
+							<img id="testMonty" src="media/monty.jpg" alt="A small tan and brown terrier on a road.">
+						</div>
+					</div>
+					<p class="testimonial-quote test-quote-l">
+						Xavier has become our most trusted dog sitter and walker. Always on time and patient and kind to our little dog who can be a slow poke, I can’t recommend Xavier enough. <span class="full-quote">Xavier has also watched Monty at our home and always leaves the place in great shape. I never worry about Monty when they are together! </span><i class="quote-author">-&nbsp;Mary F</i></i><span><i>&nbsp;[Click for full quote]</i></span>
+					</p>
+				</article>
+			</div>
+			<div class="testimonial-r testimonial-middle">
+				<article class="testimonial" tabindex="0">
+					<div class="testimonial-images-cage">
+						<div class="testimonial-image">
+							<img id="testJohnDogs" src="media/bowie_raya_rune.jpg" alt="A black German Shepherd, a brown husky and a white and brown pitbull sit looking at the camera.">
+						</div>
+					</div>
+					<p class="testimonial-quote test-quote-r">
+						Xavier always provides excellent service when he takes care of our three dogs while we’re out of town! His combination of reliability and attention to detail makes him our top option to care for our fur babies. <span class="full-quote">&nbsp;They all love him and get very excited when he shows up, which makes it much easier for us to leave!"</span><i class="quote-author">-&nbsp;John N</i><span><i>&nbsp;[Click for full quote]</i></span>
+					</p>
+				</article>
+			</div>
+			<div class="testimonial-l testimonial-middle">
+				<article class="testimonial">
+					<div class="testimonial-images-cage">
+						<div class="testimonial-image" id="testMulti1" tabindex="0">
+							<img src="media/sancho.jpg" id="testMulti1img" alt="A gray-nosed black dog looks at the camera.">
+						</div>
+						<div class="testimonial-image" id="testMulti2" tabindex="0">
+							<img src="media/gandalf.jpg" id="testMulti2img" alt="A tan and brown dog with heterochromic eyes looks at the camera.">
+						</div>
+						<div class="testimonial-image" id="testMulti3" tabindex="0">
+							<img src="media/blue.jpg" id="testMulti3img" alt="A black dog with white feet looks sidelong at the camera.">
+						</div>
+					</div>
+					<p class="testimonial-quote test-quote-l">
+						Quote here<span class="full-quote">Full quote here </span><i class="quote-author"> -&nbsp;Author</i></i><span><i>&nbsp;[Click for full quote]</i></span>
+					</p>
+				</article>
+			</div>
+			<div class="testimonial-r">
+				<article class="testimonial" tabindex="0">
+					<div class="testimonial-images-cage" id="testRoseDogs">
+						<div class="testimonial-image">
+							<img src="media/braut_slinky.jpg" alt="Two elderly dachshunds sit on a blanket">
+						</div>
+					</div>
+					<p class="testimonial-quote test-quote-r">
+						Xavier has provided dog walking and pet sitting services for me, and I couldn’t be more satisfied. He is trustworthy, dependable, and delivers excellent care. <span class="full-quote">&nbsp;Most importantly, dogs truly love him — mine certainly do. Xavier is the ultimate professional and never disappoints.</span><i class="quote-author"> -&nbsp;Rosemarie G</i><span><i>&nbsp;[Click for full quote]</i></span>
+					</p>
+				</article>
+			</div>
+		</section>
+	</div>
 </main>
 
 <footer>

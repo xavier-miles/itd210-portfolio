@@ -32,7 +32,7 @@
 			<li><a href="contact.html" class="active">Contact me</a></li>
 		</ul>
 	</nav>
-	<button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+	<button class="mobile-toggle" id="mobileToggle" aria-label="Open nav menu">☰</button>
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links">
@@ -49,16 +49,19 @@
 	<div class="contact-wrapper">
 		<!-- Acts as a hero, describing the page and providing a call to action -->
 		<section class="contact-atn-grab">
-			<h2>Ready to reach out and ask for a booking?</h2>
+			<h1>Ready to reach out and ask for a booking?</h1>
 			<p>Fill out the form with the appropriate details and submit, and I'll get back to you as soon as I can!</p>
 		</section>
 		<!-- Form for name, contact info, services needed and (optionally) date -->
-		<form class="contact-form" id="contactForm" action="https://formspree.io/f/maqajyln" method="POST">
+		<!-- I used AI to advise me on how to use ARIA as I am inexperienced with it. -->
+		<form class="contact-form" id="contactForm" action="https://formspree.io/f/maqajyln" method="POST" novalidate>
 			<label for="contactName">Your name</label>
-			<input type="text" id="contactName" name="name" required aria-required="true">
+			<input type="text" id="contactName" name="name" aria-required="true" aria-describedby="nameError">
+			<p class="contact-error-message" id="nameError" aria-live="polite"></p>
 
-			<label for="emailPhone">Email/Phone</label>
-			<input id="emailPhone" name="emailPhone" required aria-required="true">
+			<label for="contactContact">Email/Phone</label>
+			<input id="contactContact" name="contactContact" required aria-required="true" aria-describedby="contactError">
+			<p class="contact-error-message" id="contactError" aria-live="polite"></p>
 			
 			<label for="startDate">Services needed starting when?</label>
 			<input id="startDate" name="startDate" type="date">
@@ -83,14 +86,19 @@
 					</label>
 				</div>
 			</fieldset>
+			<!-- <p class="contact-error-message" id="serviceError"></p> -->
 
 			<label for="contactMessage">Message</label>
-			<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-describedby="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-required="true" required></textarea>
+			<div class="contact-message-wrapper">
+				<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-required="true" aria-describedby="messageError" required></textarea>
+				<span id="messageLength">0 / 400</span>
+				<p class="contact-error-message" id="messageError" aria-live="polite"></p>
+			</div>
 
 			<div class="contact-buttons">
 				<button type="submit" id="contactSubmit">
-					<div id="contactSpinner"></div>
-					<div id="contactSubmitText">Submit your request</div>
+					<span id="contactSpinner"></span>
+					<span id="contactSubmitText">Submit your request</span>
 				</button>
 			</div>
 		</form>
