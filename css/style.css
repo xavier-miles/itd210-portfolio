@@ -14,7 +14,14 @@
   ABOUT PAGE:
   - tighten spacing
   - test hero text at more sizes (h1 is kinda big on my 1440p monitor)
-  - modify hero so that it's just a banner around "Hi, I'm Xavier" instead of the full height of the image
+  - modify hero so that it's just a banner/ribbon around "Hi, I'm Xavier" and behind the image, instead of the full height of the image
+  - #aboutHero: figure out how to make it have a max-height of ~65vh?
+  - #aboutHeroTxt h1: Consider fun font?
+  GALLERY PAGE:
+  - Correct the images so that they focus on appropriate sections at large screen sizes (2k+) (use object-[%_%])
+  - Make the hero feel the same as the other pages
+  TESTIMONIALS PAGE:
+  - Correct the hero so it's consistent with the heros on the other pages
 
   COMPLETED:
   - make cards float up slightly when hovered
@@ -486,7 +493,6 @@ button:hover, button:focus,
   background-image: linear-gradient(to bottom, var(--primary), var(--dark));
   align-items: center;
   z-index: 2;
-  /* TO DO: figure out how to make it have a max-height of ~65vh */
 }
 
 
@@ -514,8 +520,6 @@ button:hover, button:focus,
   content: " - ";
 }
 
-/* TO DO: Consider fun font for #aboutHeroTxt h1? */
-
 #aboutHeroTxt h2 {
   font-style: italic;
   line-height: 1.25;
@@ -523,7 +527,7 @@ button:hover, button:focus,
 
 #aboutHeroImg {
   grid-area: photo;
-  padding: 24px 0 0;
+  padding: 16px 0 0;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -573,7 +577,7 @@ button:hover, button:focus,
 .about-content {
   display: flex;
   flex-direction: column;
-  padding: clamp(1rem, 2.5vw, 2rem);
+  padding: 16px;
   gap: clamp(1rem, 2.5vw, 2rem);
   z-index: 1;
   position: relative;
@@ -758,12 +762,17 @@ button:hover, button:focus,
   display: flex;
   flex-direction: column;
   text-align: center;
-  min-height: 100%;
   padding: 32px;
 }
 
-.testimonial-intro {
-  margin-bottom: 32px;
+.testimonial-hero {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom, var(--primary), var(--dark));
+  align-items: center;
+  padding: 32px;
+  color: var(--light);
+  text-align: center;
 }
 
 .testimonial-l {
@@ -809,11 +818,16 @@ button:hover, button:focus,
 .testimonial-quote {
   border: 8px outset var(--secondary);
   border-radius: 24px;
+  font-size: clamp(1rem, 1vw, 1.5rem);
   background-color: var(--light);
   padding: 8px;
   z-index: 5;
   position: relative;
   top: -32px;
+}
+
+.testimonial figcaption {
+  display: inline;
 }
 
 .full-quote {
@@ -826,6 +840,20 @@ button:hover, button:focus,
 
 .quote-author {
   white-space: nowrap;
+}
+
+.quote-expand {
+  padding: 0;
+  font-family: 'Cabin', sans-serif;
+  font-size: clamp(1rem, 1vw, 1.5rem);
+  color: var(--dark);
+  background-color: var(--light);
+  border: none;
+  border-radius: 0;
+}
+
+.testimonial-quote button:hover, .testimonial-quote button:focus {
+  box-shadow: none;
 }
 
 /* change border radii for the triple-image - potentially scrappable if I get the "fanned-cards" rotations working */
@@ -1154,7 +1182,7 @@ The rest of the media query work was done by me. I converted it from max-width t
   }
 
   #aboutHeroImg {
-    padding: 24px 0;
+    padding: 16px 0;
   }
   
   #aboutHeroTxt {
@@ -1234,6 +1262,10 @@ The rest of the media query work was done by me. I converted it from max-width t
   .hero {
     height: 70vh;
   }
+
+  .about-content {
+    padding: 32px;
+  }
   
   .contact-wrapper {
     display: flex;
@@ -1285,15 +1317,14 @@ The rest of the media query work was done by me. I converted it from max-width t
     transition: .3s ease all;  
   }
 
-  .testimonial:hover .test-quote-l, .testimonial:focus .test-quote-l {
+  .testimonial:hover .test-quote-l, .testimonial:focus-within .test-quote-l {
     transform: rotate(0deg) translate(0, -16px);
     transition: .3s ease all;
   }
 
-  .testimonial:hover .test-quote-r, .testimonial:focus .test-quote-r {
+  .testimonial:hover .test-quote-r, .testimonial:focus-within .test-quote-r {
     transform: rotate(0deg) translate(0px, 16px);
     transition: .3s ease all;
-    
   }
 }
 

@@ -3,7 +3,7 @@ tailwind.config = {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#005580',
+				primary: '#013651',
 				secondary: '#F7F986',
 				dark: '#013651',
 				light: '#c0cad8',
@@ -21,6 +21,7 @@ tailwind.config = {
 			},
 			boxShadow: {
 				'hover': '0px 0px 32px #013651',
+				'button': 'inset 1px 1px 4px #013651, inset -1px -1px 4px #013651, 1px 1px 4px #013651, -1px -1px 4px #013651'
 			}
 		}
 	}

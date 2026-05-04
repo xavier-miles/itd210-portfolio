@@ -24,7 +24,7 @@
 <!-- It took me WAY, WAY too long to convert the header/footer to Tailwind. I guess Professor Gilliam was right - Tailwind really is making my head spin and explode. -->
 <body class="min-h-[100vh] bg-bg font-cabin overflow-x-hidden grid grid-rows-[auto,1fr,auto] text-dark">
 <header class="sticky top-0 bg-primary font-montserrat min-h-[72px] flex items-center justify-between text-secondary z-[1000000]">
-	<p class="text-base md:text-xl 2xl:text-2xl underline decoration-wavy font-bold px-4"><a href="index.html" class="px-4">Barcroft Pet Companion</a></p>
+	<p class="text-base md:text-xl 2xl:text-2xl underline decoration-wavy decoration-[3px] font-bold px-4"><a href="index.html" class="px-4">Barcroft Pet Companion</a></p>
 	<nav class="desktop-nav hidden lg:block" aria-label="Desktop navigation">
 		<ul class="desktop-nav-links text-sm lg:text-base xl:text-lg 2xl:text-xl flex px-4">
 			<li><a href="index.html" class="decoration-none px-4 hover:underline hover:decoration-wavy">Home</a></li>
@@ -35,7 +35,7 @@
 			<li><a href="contact.html" class="decoration-none px-4 hover:underline hover:decoration-wavy">Contact me</a></li>
 		</ul>
 	</nav>
-	<button class="mobile-toggle lg:hidden block my-0 mr-8 text-base sm:text-2xl lg:text-4xl bg-light border-2 border-gray-500 rounded-full text-primary py-1 px-2 transition-all duration-300 ease-in-out" id="mobileToggle" aria-label="Open nav menu">☰</button>
+	<button class="mobile-toggle lg:hidden block h-[44px] w-[44px] py-1 px-2 my-0 ml-auto mr-4 text-xl border-2 border-gray-500 rounded-full bg-light text-primary hover:shadow-button focus:shadow-button transition-all duration-100 ease-in-out" id="mobileToggle" aria-label="Open nav menu">☰</button>
 </header>
 <nav class="mobile-nav lg:hidden flex-col text-right p-0 bg-primary z-[100000] fixed left-0 right-0 top-[72px] text-secondary transform -translate-y-full pointer-events-none opacity-0 transition-all duration-300 ease-in-out" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links flex flex-col gap-4 py-4">
@@ -49,58 +49,58 @@
 </nav>
 
 <main>
-	<!-- Gallery header: large and in charge
+	<!-- Gallery hero: large and in charge
 		TO DO: has an elliptical shadow around it
-		Centered on the screen-->
-	<section id="galleryHeader" class="flex flex-col items-center bg-[linear-gradient(to_bottom,#005580,#013651)] mb-8 text-center p-4 sm:p-8 ">
+		Centered on the screen -->
+	<section id="galleryHero" class="flex flex-col items-center bg-[linear-gradient(to_bottom,#005580,#013651)] text-center p-4 sm:p-8 ">
 		<h1 class="text-4xl md:text-6xl 2xl:text-7xl font-montserrat text-light font-extrabold tracking-[.5rem]">Gallery</h1>
 		<h2 class="text-base md:text-xl 2xl:text-2xl font-montserrat text-light">Over the years I've cared for many animals. Here are some of those furry friends.</h2>
-		<p class="text-sm sm:text-base 2xl:text-xl text-bg">All photos taken by me, shared with animal owners' permission</p>
+		<p class="caption text-sm sm:text-base 2xl:text-xl text-bg">All photos taken by me, shared with animal owners' permission</p>
 	</section>
-	<section id="galleryGrid" class="flex flex-wrap p-8 gap-8 justify-evenly">
-		<div id="galleryItem" class="w-full md:w-[45%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover fo										cus:shadow-hover transition-all duration-300 ease-in-out">
+	<div id="galleryGrid" class="flex flex-wrap p-8 gap-8 justify-evenly">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/ajax_ball.jpg" alt="Close-up of a brown and tan dog's face laying on grass. The mouth is open and there's a slobbery ball just beside." class="h-full w-full object-cover object-center">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Ajax relaxing on the lawn with his favorite ball ready at hand</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Ajax relaxing on the lawn with his favorite ball ready at hand</p>
 		</div>
-		<div id="galleryItem" class="w-full md:w-[45%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover transition-all duration-300 ease-in-out">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/monty_winter.jpg" alt="A brown and black terrier with an orange jacket stands on a snow-covered dock. The lake is covered in ice." class="h-full w-full object-cover object-[50%_60%]">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Monty contemplating the ice on the Lake on a cold winter day</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Monty contemplating the ice on the Lake on a cold winter day</p>
 		</div>
-		<div id="galleryItem" class="w-full md:w-[44%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover transition-all duration-300 ease-in-out">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/gigi.jpg" alt="A brown dog looks at the camera with her mouth open." class="h-full w-full object-cover object-center">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Gigi posing for the camera on a bright and sunny day</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Gigi posing for the camera on a bright and sunny day</p>
 		</div>
-		<div id="galleryItem" class="w-full md:w-[44%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover transition-all duration-300 ease-in-out">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/slinky_closeup.jpg" alt="Close-up of a brown dachshund's face with the tongue sticking slightly out." class="h-full w-full object-cover object-center">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Slinky showing his signature funny face</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Slinky showing his signature funny face</p>
 		</div>
-		<div id="galleryItem" class="w-full md:w-[44%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover transition-all duration-300 ease-in-out">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/shalla.jpg" alt="A white and gray Persian cat sits on a glass tabletop in a living room." class="h-full w-full object-cover object-center">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Shalla sitting like the queen she is</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Shalla sitting like the queen she is</p>
 		</div>
-		<div id="galleryItem" class="w-full md:w-[44%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover transition-all duration-300 ease-in-out">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/shade_yawn.jpg" alt="A small dark brown dog yawns with its tongue out while being pet on the chin by someone wearing a watch." class="h-full w-full object-cover object-[50%_20%]">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Shade taking a big yawn</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Shade taking a big yawn</p>
 		</div>
-		<div id="galleryItem" class="w-full md:w-[44%] xl:w-[30%] transition-all duration-300 ease-in-out hover:scale-105 focus:shadow-hover focus:scale-105">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover transition-all duration-300 ease-in-out">
+		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
 				<img src="media/raya_sleep.jpg" alt="A brown and white Pitbull sleeps with her face smooshed on a couch." class="h-full w-full object-cover object-center">
 			</div>
-			<p class="text-sm sm:text-base 2xl:text-xl text-center">Raya found a comfy couch to lay her face on</p>
+			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Raya found a comfy couch to lay her face on</p>
 		</div>
-	</section>
+	</div>
 </main>
 
 <footer class="bg-dark text-light h-12 flex items-center justify-center text-center text-[clamp(0.9rem,1vw,2rem)]">

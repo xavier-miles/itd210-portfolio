@@ -11,6 +11,18 @@ const header = document.querySelector("header")
 
 // listening to the burger [menu button] to open/close it and changes from ☰ to X
 toggle.addEventListener("click", () => {
+  toggleMobile();
+});
+
+//Close the mobile menu if you press esc
+document.addEventListener("keydown", (event) => {
+  if (event.keyCode === 27 && mobileNav.classList.contains("open")) {
+    toggleMobile();
+  }
+});
+
+//Mobile menu open/close functionality
+function toggleMobile() {
   mobileNav.classList.toggle("-translate-y-full");
   mobileNav.classList.toggle("pointer-events-none");
   mobileNav.classList.toggle("opacity-0");
@@ -26,7 +38,7 @@ toggle.addEventListener("click", () => {
     toggle.style.background = "#F7F986";
     toggle.textContent = "✖";
   }
-});
+}
 
 //checks if you click NOT on the mobile nav, NOT on the header, and then closes the mobile nav if so and changes from ☰ to X
 document.addEventListener("click", function(event) {
@@ -246,10 +258,19 @@ if (bgMute) {
 }
 
 // Testimonials page
-const testQuotes = document.querySelectorAll(".testimonial-quote");
+const testimonialQuote = document.querySelectorAll(".testimonial-quote");
 
-testQuotes.forEach((quote) => {
-  quote.addEventListener("click", () => {
-    quote.classList.toggle("expanded");
-  });
+//expands the quote, and changes the text to signal you can click again to collapse
+testimonialQuote.forEach((quote) => {
+  quote.addEventListener("click", expandQuote);
 });
+
+function expandQuote() {
+  this.classList.toggle("expanded");
+
+  const quoteButton = this.querySelector(".quote-expand");
+
+  if (this.classList.contains("expanded")) {
+    quoteButton.textContent = "\u00A0[Click to collapse]";
+  } else quoteButton.textContent = "\u00A0[Click for full quote]";
+}
