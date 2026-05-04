@@ -1,4 +1,5 @@
 // Sets Tailwind custom colors, fonts
+// eslint-disable-next-line
 tailwind.config = {
 	theme: {
 		extend: {

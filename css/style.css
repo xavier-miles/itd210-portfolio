@@ -350,7 +350,6 @@ header a.active {
   transition: ease-in-out .1s;
 }
 
-
 /* I used AI assistance in helping me figure out how to target a selected checkbox when the checkbox is invisible (label:has(input:checked)) */
 .hero-btns a:hover, .hero-btns a:focus,
 button:hover, button:focus,
@@ -494,7 +493,6 @@ button:hover, button:focus,
   align-items: center;
   z-index: 2;
 }
-
 
 #aboutHeroTxt {
   grid-area: intro;
@@ -1102,7 +1100,6 @@ footer p {
 }
 
 /* Responsive styles */
-
 @media (max-width: 480px) {
   /* Less motion on small screens, as due to the image's dimensions it would otherwise scroll up too far, showing empty space underneath it in the hero */
   @keyframes heroSlide1 {
