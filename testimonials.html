@@ -20,11 +20,11 @@
 </head>
 <!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <body>
+<a id="skipLink" href="#mainContent"><p>Skip to main content</p></a>
 <header>
 	<p><a href="index.html">Barcroft Pet Companion</a></p>
 	<nav class="desktop-nav" aria-label="Desktop navigation">
 		<ul class="desktop-nav-links">
-			<li><a href="index.html">Home</a></li>
 			<li><a href="about.html">About</a></li>
 			<li><a href="services.html">Services</a></li>
 			<li><a href="gallery.html">Gallery</a></li>
@@ -36,7 +36,6 @@
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links">
-		<li><a href="index.html">Home</a></li>
 		<li><a href="about.html">About</a></li>
 		<li><a href="services.html">Services</a></li>
 		<li><a href="gallery.html">Gallery</a></li>
@@ -45,7 +44,7 @@
 	</ul>
 </nav>
 
-<main>
+<main id="mainContent">
 	<!-- testimonials zig-zagged left, right, left, right -->
 	<section class="testimonial-hero">
 		<h1>Testimonials</h1>
@@ -65,45 +64,49 @@
 		-->
 		<div class="testimonials">
 			<div class="testimonial-l">
-				<figure class="testimonial" tabindex="0">
+				<div class="testimonial" tabindex="0">
 					<div class="testimonial-images-cage">
 						<div class="testimonial-image">
 							<img id="testMonty" src="media/monty.jpg" alt="A small tan and brown terrier on a road.">
 						</div>
 					</div>
 					<div class="testimonial-quote test-quote-l">
-						<blockquote>
-							Xavier has become our most trusted dog sitter and walker. Always on time and patient and kind to our little dog who can be a slow poke, I can’t recommend Xavier enough.
-							<span class="full-quote">Xavier has also watched Monty at our home and always leaves the place in great shape. I never worry about Monty when they are together!</span>
-						</blockquote>
-						<figcaption class="quote-author">
+						<div>
+							<p>
+								Xavier has become our most trusted dog sitter and walker. Always on time and patient and kind to our little dog who can be a slow poke, I can’t recommend Xavier enough.
+								<span class="full-quote">Xavier has also watched Monty at our home and always leaves the place in great shape. I never worry about Monty when they are together!</span>
+							</p>
+						</div>
+						<div class="quote-author">
 							-&nbsp;Mary F
 							<button class="quote-expand">[Click for full quote]</button>
-						</figcaption>
+						</div>
 					</div>
-				</figure>
+				</div>
 			</div>
 			<div class="testimonial-r testimonial-middle">
-				<figure class="testimonial" tabindex="0">
+				<div class="testimonial" tabindex="0">
 					<div class="testimonial-images-cage">
 						<div class="testimonial-image">
 							<img id="testJohnDogs" src="media/bowie_raya_rune.jpg" alt="A black German Shepherd, a brown husky and a white and brown pitbull sit looking at the camera.">
 						</div>
 					</div>
 					<div class="testimonial-quote test-quote-r">
-						<blockquote>
-							Xavier always provides excellent service when he takes care of our three dogs while we’re out of town! His combination of reliability and attention to detail makes him our top option to care for our fur babies.
-							<span class="full-quote">&nbsp;They all love him and get very excited when he shows up, which makes it much easier for us to leave!</span>
-						</blockquote>
-						<figcaption class="quote-author">
+						<div>
+							<p>
+								Xavier always provides excellent service when he takes care of our three dogs while we’re out of town! His combination of reliability and attention to detail makes him our top option to care for our fur babies.
+								<span class="full-quote">They all love him and get very excited when he shows up, which makes it much easier for us to leave!</span>
+							</p>
+						</div>
+						<div class="quote-author">
 							-&nbsp;John N
 							<button class="quote-expand">[Click for full quote]</button>
-						</figcaption>
+						</div>
 					</div>
-				</figure>
+				</div>
 			</div>
 			<div class="testimonial-l testimonial-middle">
-				<figure class="testimonial">
+				<div class="testimonial">
 					<div class="testimonial-images-cage">
 						<div class="testimonial-image" id="testMulti1" tabindex="0">
 							<img src="media/sancho.jpg" id="testMulti1img" alt="A gray-nosed black dog looks at the camera.">
@@ -116,31 +119,35 @@
 						</div>
 					</div>
 					<div class="testimonial-quote test-quote-l">
-						<blockquote>
-							Our dogs and cats love Xavier. We recommend Xavier for dog walking and pet. He is reliable, communicative and great with animals.
-						</blockquote>
-						<figcaption class="quote-author"> -&nbsp;John S</figcaption>
+						<div>
+							<p>
+								Our dogs and cats love Xavier. We recommend Xavier for dog walking and pet. He is reliable, communicative and great with animals.
+							</p>
+						</div>
+						<div class="quote-author"> -&nbsp;John S</div>
 					</div>
-				</figure>
+				</div>
 			</div>
 			<div class="testimonial-r">
-				<figure class="testimonial" tabindex="0">
+				<div class="testimonial" tabindex="0">
 					<div class="testimonial-images-cage" id="testRoseDogs">
 						<div class="testimonial-image">
 							<img src="media/braut_slinky.jpg" alt="Two elderly dachshunds sit on a blanket">
 						</div>
 					</div>
 					<div class="testimonial-quote test-quote-l">
-						<blockquote>
-							Xavier has provided dog walking and pet sitting services for me, and I couldn’t be more satisfied. He is trustworthy, dependable, and delivers excellent care.
-							<span class="full-quote">&nbsp;Most importantly, dogs truly love him — mine certainly do. Xavier is the ultimate professional and never disappoints.</span>
-						</blockquote>
-						<figcaption class="quote-author">
+						<div>
+							<p>
+								Xavier has provided dog walking and pet sitting services for me, and I couldn’t be more satisfied. He is trustworthy, dependable, and delivers excellent care.
+								<span class="full-quote">Most importantly, dogs truly love him — mine certainly do. Xavier is the ultimate professional and never disappoints.</span>
+							</p>
+						</div>
+						<div class="quote-author">
 							-&nbsp;Rosemarie G
 							<button class="quote-expand">[Click for full quote]</button>
-						</figcaption>
+						</div>
 					</div>
-				</figure>
+				</div>
 			</div>
 		</div>
 	</div>

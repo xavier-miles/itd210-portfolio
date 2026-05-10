@@ -24,11 +24,11 @@
 	
 -->
 <body>
+<a id="skipLink" href="#mainContent">Skip to main content</a>
 <header>
 	<p><a href="index.html">Barcroft Pet Companion</a></p>
 	<nav class="desktop-nav" aria-label="Desktop navigation">
 		<ul class="desktop-nav-links">
-			<li><a href="index.html" class="active">Home</a></li>
 			<li><a href="about.html">About</a></li>
 			<li><a href="services.html">Services</a></li>
 			<li><a href="gallery.html">Gallery</a></li>
@@ -40,7 +40,6 @@
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links">
-		<li><a href="index.html" class="active">Home</a></li>
 		<li><a href="about.html">About</a></li>
 		<li><a href="services.html">Services</a></li>
 		<li><a href="gallery.html">Gallery</a></li>
@@ -49,22 +48,23 @@
 	</ul>
 </nav>
 
-<main>
+<main id="mainContent">
+	<!-- hero section with sliding picture to grab interest and be dynamic -->
 	<section class="hero">
 		<div class="hero-media">
-			<img src="media/bridge_view.webp" class="hero-img hero-img1" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
-			<img src="media/bridge_view.webp" class="hero-img hero-img2" alt="Reflective surface of a lake, with trees lining the sides. The sky is blue with a few clouds, and there are pontoon boats moored at the banks.">
+			<img src="media/bridge_view.webp" class="hero-img hero-img1" alt="Reflective lake surface in forested area. There are pontoon boats moored at the banks.">
+			<img src="media/bridge_view.webp" class="hero-img hero-img2" alt="Reflective lake surface in forested area. There are pontoon boats moored at the banks.">
 		</div>
 		<div class="hero-inner">
 			<div class="hero-text">
 				<h1 class="load-in">Barcroft Pet Companion</h1>
 				<p class="load-in-delay-1">Reliable, local care for your beloved furry friends.</p>
 			</div>
-			<div class="hero-btns load-in-delay-2">
+			<div class="hero-btns load-in-delay-4">
 				<a href="services.html" class="cta-btn">View services</a>
 				<a href="contact.html" class="cta-btn">Request a booking now</a>
 			</div>
-			<div class="cat-fact-section load-in-delay-2">
+			<div class="cat-fact-section load-in-delay-5">
 				<div class="cat-options">
 					<button id="catFactBtn">Get&nbsp;cat&nbsp;facts</button>
 					<select id="factsSelect" name="factsSelect">
@@ -76,20 +76,20 @@
 				<div id="catFactMsg">
 					<p id="factLoading" style="display: none;">Fact loading!</p>
 					<div id="catFact"></div>
-
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="cards">
+	<!-- cards for navigation -->
+	<div class="cards">
 		<a href="about.html">
 			<article class="card">
 				<div class="card-image">
 					<img src="media/headshot.jpg" id="headshot" alt="Young person with long blonde hair smiling at the camera; off-white background">
 				</div>
 				<div class="card-text">
-					<h2>About me</h2>
+					<h3>About me</h3>
 					<p>Learn more about who I am and my history with pets</p>
 				</div>
 			</article>
@@ -100,7 +100,7 @@
 					<img src="media/clipboard.png" alt="Clip art of a clipboard with a checklist"> <!-- from https://creazilla.com/media/clipart/3170143/clipboard, Creative Commons 0 (public domain) -->
 				</div>
 				<div class="card-text">
-					<h2>Services</h2>
+					<h3>Services</h3>
 					<p>Explore my services and price sheet</p>
 				</div>
 			</article>
@@ -111,7 +111,7 @@
 					<img src="media/piper_dragon.jpg" alt="Australian labradoodle puppy in front of an inflatable dragon">
 				</div>
 				<div class="card-text">
-					<h2>Gallery</h2>
+					<h3>Gallery</h3>
 					<p>See some of the four-legged friends I've cared for</p>
 				</div>
 			</article>
@@ -122,12 +122,12 @@
 					<img src="media/review.png" alt="A post-it note with the word 'Review'"> <!-- from https://www.clipsafari.com/clips/o286079-review, Creative Commons 0 (public domain) -->
 				</div>
 				<div class="card-text">
-					<h2>Testimonials</h2>
+					<h3>Testimonials</h3>
 					<p>Read what my clients have said about my services</p>
 				</div>
 			</article>
 		</a>
-	</section>
+	</div>
 </main>
 
 <footer>

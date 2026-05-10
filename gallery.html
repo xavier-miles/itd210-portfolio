@@ -17,17 +17,18 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="js/tailwind-config.js"></script>
 </head>
 <!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <!-- It took me WAY, WAY too long to convert the header/footer to Tailwind. I guess Professor Gilliam was right - Tailwind really is making my head spin and explode. -->
 <body class="min-h-[100vh] bg-bg font-cabin overflow-x-hidden grid grid-rows-[auto,1fr,auto] text-dark">
-<header class="sticky top-0 bg-primary font-montserrat min-h-[72px] flex items-center justify-between text-secondary z-[1000000]">
-	<p class="text-base md:text-xl 2xl:text-2xl underline decoration-wavy decoration-[3px] font-bold px-4"><a href="index.html" class="px-4">Barcroft Pet Companion</a></p>
+<a id="skipLink" href="#mainContent" class="absolute z-[101] -top-16 left-[50%] -translate-x-[50%] text-base underline decoration-wavy leading-[1.2] py-2 px-4 bg-secondary text-primary rounded-3xl transition-all motion-reduce:transition-none duration-300 ease-in-out focus:shadow-hover focus:top-4">Skip to main content</a>
+<header class="sticky top-0 bg-primary font-montserrat min-h-[72px] flex items-center justify-between text-secondary z-[100]">
+	<p class="text-base md:text-xl 2xl:text-2xl underline decoration-wavy decoration-[3px] font-bold"><a href="index.html" class="sm:px-4">Barcroft Pet Companion</a></p>
 	<nav class="desktop-nav hidden lg:block" aria-label="Desktop navigation">
-		<ul class="desktop-nav-links text-sm lg:text-base xl:text-lg 2xl:text-xl flex px-4">
-			<li><a href="index.html" class="decoration-none px-4 hover:underline hover:decoration-wavy">Home</a></li>
+		<ul class="desktop-nav-links text-sm lg:text-base xl:text-lg 2xl:text-xl flex">
 			<li><a href="about.html" class="decoration-none px-4 hover:underline hover:decoration-wavy">About</a></li>
 			<li><a href="services.html" class="decoration-none px-4 hover:underline hover:decoration-wavy">Services</a></li>
 			<li><a href="gallery.html" class="active decoration-none font-bold py-1.5 px-4 bg-secondary text-primary rounded-3xl">Gallery</a></li>
@@ -35,11 +36,10 @@
 			<li><a href="contact.html" class="decoration-none px-4 hover:underline hover:decoration-wavy">Contact me</a></li>
 		</ul>
 	</nav>
-	<button class="mobile-toggle lg:hidden block h-[44px] w-[44px] py-1 px-2 my-0 ml-auto mr-4 text-xl border-2 border-gray-500 rounded-full bg-light text-primary hover:shadow-button focus:shadow-button transition-all duration-100 ease-in-out" id="mobileToggle" aria-label="Open nav menu">☰</button>
+	<button class="mobile-toggle lg:hidden block h-[44px] w-[44px] py-1 px-2 my-0 text-xl border-2 border-gray-500 rounded-full bg-light text-primary hover:shadow-button focus:shadow-button transition-all motion-reduce:transition-none duration-100 ease-in-out" id="mobileToggle" aria-label="Open nav menu">☰</button>
 </header>
-<nav class="mobile-nav lg:hidden flex-col text-right p-0 bg-primary z-[100000] fixed left-0 right-0 top-[72px] text-secondary transform -translate-y-full pointer-events-none opacity-0 transition-all duration-300 ease-in-out" id="mobileNav" aria-label="Mobile navigation">
-	<ul class="mobile-nav-links flex flex-col gap-4 py-4">
-		<li><a href="index.html" class="px-6 py-1.5 hover:underline hover:decoration-wavy">Home</a></li>
+<nav class="mobile-nav lg:hidden p-0 bg-primary z-[99] fixed left-0 right-0 top-[72px] text-secondary transform -translate-y-full pointer-events-none opacity-0 transition-all motion-reduce:transition-none duration-300 ease-in-out" id="mobileNav" aria-label="Mobile navigation">
+	<ul class="mobile-nav-links flex py-4">
 		<li><a href="about.html" class="px-6 py-1.5 hover:underline hover:decoration-wavy">About</a></li>
 		<li><a href="services.html" class="px-6 py-1.5 hover:underline hover:decoration-wavy">Services</a></li>
 		<li><a href="gallery.html" class="active px-6 py-1.5 font-bold bg-secondary text-primary rounded-l-3xl">Gallery</a></li>
@@ -48,55 +48,55 @@
 	</ul>
 </nav>
 
-<main>
+<main id="mainContent" class="scroll-mt-[72px]">
 	<!-- Gallery hero: large and in charge
 		TO DO: has an elliptical shadow around it
 		Centered on the screen -->
-	<section id="galleryHero" class="flex flex-col items-center bg-[linear-gradient(to_bottom,#005580,#013651)] text-center p-4 sm:p-8 ">
-		<h1 class="text-4xl md:text-6xl 2xl:text-7xl font-montserrat text-light font-extrabold tracking-[.5rem]">Gallery</h1>
-		<h2 class="text-base md:text-xl 2xl:text-2xl font-montserrat text-light">Over the years I've cared for many animals. Here are some of those furry friends.</h2>
-		<p class="caption text-sm sm:text-base 2xl:text-xl text-bg">All photos taken by me, shared with animal owners' permission</p>
+	<section id="galleryHero" class="bg-[linear-gradient(to_bottom,#005580,#013651)] text-center p-4 sm:p-8 ">
+		<h1 class="text-h1 font-montserrat text-light font-bold">Gallery</h1>
+		<p class="text-p font-cabin text-light">Over the years I've cared for many animals. Here are some of those furry friends. Click an image to expand it!</p>
+		<p class="caption p-caption text-bg">All photos taken by me, shared with animal owners' permission</p>
 	</section>
-	<div id="galleryGrid" class="flex flex-wrap p-8 gap-8 justify-evenly">
+	<div id="galleryGrid" class="flex flex-wrap p-4 sm:p-8 gap-8 justify-evenly">
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/ajax_ball.jpg" alt="Close-up of a brown and tan dog's face laying on grass. The mouth is open and there's a slobbery ball just beside." class="h-full w-full object-cover object-center">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/ajax_ball.jpg" alt="Close-up of a brown and tan dog's face laying on grass. The mouth is open and there's a slobbery ball just beside." class="h-full w-full object-cover object-[0%_36%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Ajax relaxing on the lawn with his favorite ball ready at hand</p>
 		</div>
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/monty_winter.jpg" alt="A brown and black terrier with an orange jacket stands on a snow-covered dock. The lake is covered in ice." class="h-full w-full object-cover object-[50%_60%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/monty_winter.jpg" alt="A brown and black terrier with an orange jacket stands on a snow-covered dock. The lake is covered in ice." class="h-full w-full object-cover object-[50%_57%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Monty contemplating the ice on the Lake on a cold winter day</p>
 		</div>
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/gigi.jpg" alt="A brown dog looks at the camera with her mouth open." class="h-full w-full object-cover object-center">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/gigi.jpg" alt="A brown dog looks at the camera with her mouth open." class="h-full w-full object-cover object-[50%_21%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Gigi posing for the camera on a bright and sunny day</p>
 		</div>
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/slinky_closeup.jpg" alt="Close-up of a brown dachshund's face with the tongue sticking slightly out." class="h-full w-full object-cover object-center">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/slinky_closeup.jpg" alt="Close-up of a brown dachshund's face with the tongue sticking slightly out." class="h-full w-full object-cover object-[40%_45%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Slinky showing his signature funny face</p>
 		</div>
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/shalla.jpg" alt="A white and gray Persian cat sits on a glass tabletop in a living room." class="h-full w-full object-cover object-center">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/shalla.jpg" alt="A white and gray Persian cat sits on a glass tabletop in a living room." class="h-full w-full object-cover object-[45%_35%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Shalla sitting like the queen she is</p>
 		</div>
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/shade_yawn.jpg" alt="A small dark brown dog yawns with its tongue out while being pet on the chin by someone wearing a watch." class="h-full w-full object-cover object-[50%_20%]">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/shade_yawn.jpg" alt="A small dark brown dog yawns with its tongue out while being pet on the chin by someone wearing a watch." class="h-full w-full object-cover object-[50%_16%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Shade taking a big yawn</p>
 		</div>
 		<div class="galleryItem w-full md:w-[47%] xl:w-[31%]">
-			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all duration-300 ease-in-out">
-				<img src="media/raya_sleep.jpg" alt="A brown and white Pitbull sleeps with her face smooshed on a couch." class="h-full w-full object-cover object-center">
+			<div tabindex="0" class="rounded-3xl overflow-hidden h-[384px] sm:h-[512px] 2xl:h-[640px] hover:shadow-hover focus:shadow-hover hover:scale-105 focus:scale-105 transition-all motion-reduce:transition-none duration-300 ease-in-out">
+				<img src="media/raya_sleep.jpg" alt="A brown and white Pitbull sleeps with her face smooshed on a couch." class="h-full w-full object-cover object-[50%_52%]">
 			</div>
 			<p class="text-sm sm:text-base 2xl:text-xl text-center mt-3">Raya found a comfy couch to lay her face on</p>
 		</div>

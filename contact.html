@@ -20,11 +20,11 @@
 </head>
 <!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <body>
+<a id="skipLink" href="#mainContent">Skip to main content</a>
 <header>
 	<p><a href="index.html">Barcroft Pet Companion</a></p>
 	<nav class="desktop-nav" aria-label="Desktop navigation">
 		<ul class="desktop-nav-links">
-			<li><a href="index.html">Home</a></li>
 			<li><a href="about.html">About</a></li>
 			<li><a href="services.html">Services</a></li>
 			<li><a href="gallery.html">Gallery</a></li>
@@ -36,7 +36,6 @@
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links">
-		<li><a href="index.html">Home</a></li>
 		<li><a href="about.html">About</a></li>
 		<li><a href="services.html">Services</a></li>
 		<li><a href="gallery.html">Gallery</a></li>
@@ -45,7 +44,7 @@
 	</ul>
 </nav>
 
-<main>
+<main id="mainContent">
 	<div class="contact-wrapper">
 		<!-- Acts as a hero, describing the page and providing a call to action -->
 		<section class="contact-atn-grab">
@@ -60,13 +59,13 @@
 			<p class="contact-error-message" id="nameError" aria-live="polite"></p>
 
 			<label for="contactContact">Email/Phone</label>
-			<input id="contactContact" name="contactContact" required aria-required="true" aria-describedby="contactError">
+			<input id="contactContact" name="contactContact" required aria-describedby="contactError">
 			<p class="contact-error-message" id="contactError" aria-live="polite"></p>
 			
 			<label for="startDate">Services needed starting when?</label>
 			<input id="startDate" name="startDate" type="date">
 
-			<fieldset>
+			<fieldset aria-describedby="serviceError">
 				<legend>What care are you looking for?</legend>
 				<div class="contact-fieldset-boxes">
 					<label>
@@ -86,11 +85,11 @@
 					</label>
 				</div>
 			</fieldset>
-			<!-- <p class="contact-error-message" id="serviceError"></p> -->
+			<p class="contact-error-message" id="serviceError"></p>
 
 			<label for="contactMessage">Message</label>
 			<div class="contact-message-wrapper">
-				<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-required="true" aria-describedby="messageError" required></textarea>
+				<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-describedby="messageError" required></textarea>
 				<span id="messageLength">0 / 400</span>
 				<p class="contact-error-message" id="messageError" aria-live="polite"></p>
 			</div>

@@ -20,11 +20,11 @@
 </head>
 <!-- I used AI assistance in fixing the CSP meta tag, since it was blocking the loading of Tailwind/Google fonts. It also moved the Tailwind config script to a dedicated file. -->
 <body>
+<a id="skipLink" href="#mainContent">Skip to main content</a>
 <header>
 	<p><a href="index.html">Barcroft Pet Companion</a></p>
 	<nav class="desktop-nav" aria-label="Desktop navigation">
 		<ul class="desktop-nav-links">
-			<li><a href="index.html">Home</a></li>
 			<li><a href="about.html">About</a></li>
 			<li><a href="services.html" class="active">Services</a></li>
 			<li><a href="gallery.html">Gallery</a></li>
@@ -36,7 +36,6 @@
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
 	<ul class="mobile-nav-links">
-		<li><a href="index.html">Home</a></li>
 		<li><a href="about.html">About</a></li>
 		<li><a href="services.html" class="active">Services</a></li>
 		<li><a href="gallery.html">Gallery</a></li>
@@ -47,7 +46,7 @@
 
 <!-- Attribution:
 	Background SFX: https://pixabay.com/sound-effects/nature-park-6026/ -->
-<main>
+<main id="mainContent">
 	<div class="services-wrapper">
 		<p class="caption sfx-caption">Background ambient park sounds (birds, barking, faint speech) are playing to inspire peace and a sense of relaxation</p>
 		<!-- background SFX of nature sounds and controls to mute it -->
@@ -62,7 +61,7 @@
 		<section class="services-header">
 			<h1>Services</h1>
 			<div class="services-video">
-				<video id="servicesIntro" controls controlslist="nodownload" poster="media/services_intro_poster.jpg">
+				<video id="servicesIntro" controls poster="media/services_intro_poster.jpg" aria-label="A short video introducing the viewer to the services page and thanking them for choosing to visit the site">
 					<source src="media/services_intro.mov" type="video/mp4">
 					<track kind="captions" src="media/captions.vtt" srclang="en" label="English" default>
 					Sorry, your browser doesn't support HTML5 video playback.
@@ -73,15 +72,17 @@
 		<!-- use <details> <summary> for animated expanding information -->
 		<!-- I used AI to figure out how to target the clicked service and send that to a query param. I knew I had to pass data from one page to another and knew how to select the checkbox on the destination page (contact.html) but I didn't know about data-service or how to use it. -->
 		<ul class="services-list">
-			<li class="service" data-service="walks">
+			<li class="service service-bottom-border" data-service="walks">
 				<div class="service-name">
-					<h3>Dog walking</h3>
-					<a href="contact.html?service=walks" class="book-button">Book</a>
+					<a href="contact.html?service=walks" class="book-button" aria-label="Book dog walks">Book</a>
+					<h2>Dog walking</h2>
 				</div>
 				<div class="service-description">
 					<details>
-						<summary>
-							<p class="service-summary">30-minute rate: $17<br>60-minute rate: $27<br><i>$3 per additional dog for all rates</i></p>
+						<summary class="service-summary">
+							<span>
+								30-minute rate: $17<br>60-minute rate: $27<br><i>$3 per additional dog for all rates</i>
+							</span>
 						</summary>
 						<div class="service-details">
 							<p>Includes feeding</p>
@@ -89,16 +90,15 @@
 					</details>
 				</div>
 			</li>
-			<hr>
-			<li class="service" data-service="sittingShort">
+			<li class="service service-bottom-border" data-service="sittingShort">
 				<div class="service-name">
-					<h3>Dog sitting (&lt;1 day)</h3>
-					<a href="contact.html?service=sittingShort" class="book-button">Book</a>
+					<a href="contact.html?service=sittingShort" class="book-button" aria-label="Book short-term sitting">Book</a>
+					<h2>Dog sitting (&lt;1 day)</h2>
 				</div>
 				<div class="service-description">
 					<details>
-						<summary>
-							<p class="service-summary">$17/hr</p>
+						<summary class="service-summary">
+							$17/hr
 						</summary>
 						<div class="service-details">
 							<p>Caps at the full-day sitting rate<br>Includes all care needs for the duration</p>
@@ -106,16 +106,15 @@
 					</details>
 				</div>
 			</li>
-			<hr>
-			<li class="service" data-service="sittingLong">
+			<li class="service service-bottom-border" data-service="sittingLong">
 				<div class="service-name">
-					<h3>Dog sitting (overnight)</h3>
-					<a href="contact.html?service=sittingLong" class="book-button">Book</a>
+					<a href="contact.html?service=sittingLong" class="book-button" aria-label="Book overnight sitting">Book</a>
+					<h2>Dog sitting (overnight)</h2>
 				</div>
 				<div class="service-description">
 					<details>
-						<summary>
-							<p class="service-summary">$60 - $75/day</p>
+						<summary class="service-summary">
+							$60 - $75/day
 						</summary>
 						<div class="service-details">
 							<p>Varies depending on number of animals and complexity of care required</p>
@@ -123,21 +122,13 @@
 					</details>
 				</div>
 			</li>
-			<hr>
 			<li class="service" data-service="cat">
 				<div class="service-name">
-					<h3>Cat care</h3>
-					<a href="contact.html?service=cat" class="book-button">Book</a>
+					<a href="contact.html?service=cat" class="book-button" aria-label="Book cat care">Book</a>
+					<h2>Cat care</h2>
 				</div>
 				<div class="service-description">
-					<!-- <details>
-						<summary> -->
-							<p class="service-summary">$16 per visit<br><i>$3 per additional cat</i></p>
-						<!-- </summary>
-						<div class="service-details">
-							<p>Contact for details</p>
-						</div>
-					</details> -->
+					<p>$16 per visit<br><i>$3 per additional cat</i></p>
 				</div>
 			</li>
 		</ul>
