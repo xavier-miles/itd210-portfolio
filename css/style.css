@@ -11,6 +11,7 @@
   - .about-hero: figure out how to make it have a max-height of ~65vh?
   - .about-hero-txt h1: Consider fun font?
   GALLERY PAGE:
+  - Add "thought bubble" on-hover over the animals' heads, containing a fun little jokey phrase? E.g. Slinky: "You got any biscuits??"
   TESTIMONIALS PAGE:
 
   COMPLETED:
@@ -192,13 +193,15 @@ header a.active {
   right: 0;
   top: 72px;
   transform: translateY(-110%);
-  transition: transform .3s ease, opacity .3s ease;
+  transition: all .3s ease;
   pointer-events: none;
+  visibility: hidden;
   opacity: 0;
 }
 
+/* Slide into view */
 .mobile-nav.open {
-  /* Slide into view */
+  visibility: visible;
   transform: translateY(0);
   pointer-events: auto; /* allow clicking when open */
   opacity: 1;
@@ -679,6 +682,16 @@ button:hover, button:focus,
   right: 16px;
 }
 
+.background-controls button {
+  height: 40px;
+  width: 40px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+}
+
 .services-header {
   margin-bottom: 32px;
 }
@@ -773,7 +786,7 @@ button:hover, button:focus,
 }
 
 .cancellation {
-  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  font-size: clamp(0.9rem, 1vw, 1.2rem);
 }
 
 /* Gallery page styles */
@@ -799,6 +812,7 @@ button:hover, button:focus,
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.25rem;
   position: absolute;
   top: 16px;
   right: 16px;
@@ -1100,12 +1114,12 @@ button:hover, button:focus,
 }
 
 .contact-error-message {
-  color: red;
+  color: #98002e;
   font-family: 'Cabin', sans-serif;
   font-weight: bold;
 }
 
-#nameError, #contactError, #serviceError {
+#errorName, #errorContact, #errorService {
   margin-top: -12px;
 }
 
@@ -1259,7 +1273,7 @@ The rest of the media query work was done by me. I converted it from max-width t
     text-align: left;
   }
   
-  /* aboutHero will wrap*/
+  /* about-hero will wrap*/
   .about-hero {
     display: grid;
     background: 0;
@@ -1436,8 +1450,7 @@ The rest of the media query work was done by me. I converted it from max-width t
     width: 75%;
   }
 
-  /* Skew the quotes at large screens for extra personality and rotate them to be aligned with the image when you hover.
-  I really wish I could have this effect on mobile sizes too but it's just too clunky and the narrow quote box makes it look odd */
+  /* Skew the quotes at large screens for extra personality and rotate them to be aligned with the image when you hover. I really wish I could have this effect on mobile sizes too but it's just too clunky and the narrow quote box makes it look odd */
   .test-quote-l {
     transform: rotate(4deg) translate(32px, -32px);
     transition: .3s ease all;

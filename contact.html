@@ -55,17 +55,17 @@
 		<!-- I used AI to advise me on how to use ARIA as I am inexperienced with it. -->
 		<form class="contact-form" id="contactForm" action="https://formspree.io/f/maqajyln" method="POST" novalidate>
 			<label for="contactName">Your name</label>
-			<input type="text" id="contactName" name="name" aria-required="true" aria-describedby="nameError">
-			<p class="contact-error-message" id="nameError" aria-live="polite"></p>
+			<input type="text" id="contactName" name="name" aria-required="true" aria-describedby="errorName">
+			<p class="contact-error-message" id="errorName" aria-live="polite"></p>
 
 			<label for="contactContact">Email/Phone</label>
-			<input id="contactContact" name="contactContact" required aria-describedby="contactError">
-			<p class="contact-error-message" id="contactError" aria-live="polite"></p>
+			<input id="contactContact" name="contactContact" required aria-describedby="errorContact">
+			<p class="contact-error-message" id="errorContact" aria-live="polite"></p>
 			
 			<label for="contactDate">Services needed starting when?</label>
 			<input id="contactDate" name="contactDate" type="date">
 
-			<fieldset aria-describedby="serviceError">
+			<fieldset aria-describedby="errorService">
 				<legend>What care are you looking for?</legend>
 				<div class="contact-fieldset-boxes">
 					<label>
@@ -85,13 +85,13 @@
 					</label>
 				</div>
 			</fieldset>
-			<p class="contact-error-message" id="serviceError"></p>
+			<p class="contact-error-message" id="errorService"></p>
 
 			<label for="contactMessage">Message</label>
 			<div class="contact-message-wrapper">
-				<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-describedby="messageError" required></textarea>
+				<textarea id="contactMessage" name="message" rows="10" placeholder="Describe the services you're looking for - include start date, duration needed and anything you think that might be relevant!" aria-describedby="errorMessage" required></textarea>
 				<span id="messageLength">0 / 400</span>
-				<p class="contact-error-message" id="messageError" aria-live="polite"></p>
+				<p class="contact-error-message" id="errorMessage" aria-live="polite"></p>
 			</div>
 
 			<div class="contact-buttons">

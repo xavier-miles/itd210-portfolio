@@ -163,8 +163,6 @@ const lightbox = document.createElement("div");
 const lightboxImage = document.createElement("img");
 const lightboxClose = document.createElement("button");
 
-// let galleryImages = document.querySelectorAll("img");
-
 lightbox.id = "lightbox";
 
 lightboxClose.id = "lightboxClose";
@@ -228,10 +226,10 @@ const contactName = document.getElementById("contactName");
 const contactContact = document.getElementById("contactContact");
 const contactMessage = document.getElementById("contactMessage");
 
-const nameError = document.getElementById("nameError");
-const contactError = document.getElementById("contactError");
-const serviceError = document.getElementById("serviceError");
-const messageError = document.getElementById("messageError");
+const errorName = document.getElementById("errorName");
+const errorContact = document.getElementById("errorContact");
+const errorService = document.getElementById("errorService");
+const errorMessage = document.getElementById("errorMessage");
 
 const messageLength = document.getElementById("messageLength");
 
@@ -243,7 +241,7 @@ if (contactForm) {
     const length = contactMessage.value.length;
     
     if (length > 400 || length < 30) {
-      messageLength.style.color = "#6a0f0f";
+      messageLength.style.color = "#98002e";
     } else if (length > 350) {
       messageLength.style.color = "#7a3f00"; 
     } else messageLength.style.color = "#013651";
@@ -258,16 +256,16 @@ if (contactForm) {
     let isFormValid = true;
 
     //reset errors if there are any 
-    nameError.textContent = "";
-    contactError.textContent = "";
-    serviceError.textContent = "";
-    messageError.textContent = "";
+    errorName.textContent = "";
+    errorContact.textContent = "";
+    errorService.textContent = "";
+    errorMessage.textContent = "";
     messageLength.style.color = "#013651";
 
     //check if name is blank
     if (contactName.value == "") {
       isFormValid = false;
-      nameError.textContent = "Name cannot be blank.";
+      errorName.textContent = "Name cannot be blank.";
     }
 
     // I used AI for the regex pattern of Email OR phone number xxxxxxxxx OR xxx-xxx-xxxx
@@ -275,28 +273,28 @@ if (contactForm) {
     const contactRegex = /^(?:[^\s@]+@[^\s@]+\.[^\s@]+|\d{10}|\d{3}-\d{3}-\d{4})$/;
     if (contactContact.value == "") {
       isFormValid = false;
-      contactError.textContent = "Contact information cannot be blank.";
+      errorContact.textContent = "Contact information cannot be blank.";
     } else if (!contactRegex.test(contactContact.value)) {
       isFormValid = false;
-      contactError.textContent = "Input valid email, or phone as 1234567890 or 123-456-7890."
+      errorContact.textContent = "Input valid email, or phone as 1234567890 or 123-456-7890."
     }
 
     //Ensure at least one service is checked
     if (document.querySelectorAll('input[name="serviceType[]"]:checked').length == 0) {
       isFormValid = false;
-      serviceError.textContent = "Please select at least one service type. If you don't see specifically what you're looking for, select Other.";
+      errorService.textContent = "Please select at least one service type. If you don't see specifically what you're looking for, select Other.";
     }
 
     //check if message is empty, too short, or too long
     if (contactMessage.value == "") {
       isFormValid = false;
-      messageError.textContent = "Please enter a message - include start date, duration needed and anything relevant!";
+      errorMessage.textContent = "Please enter a message - include start date, duration needed and anything relevant!";
     } else if (contactMessage.value.length < 30) {
       isFormValid = false;
-      messageError.textContent = "Please enter more information - it helps me understand your needs and serve you better!";
+      errorMessage.textContent = "Please enter more information - it helps me understand your needs and serve you better!";
     } else if (contactMessage.value.length > 400) {
       isFormValid = false;
-      messageError.textContent = "Message too long."
+      errorMessage.textContent = "Message too long."
     }
 
     //check validity!
