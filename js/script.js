@@ -194,6 +194,8 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+//TO DO: Make it so you can use arrow key left/right to page through the images while in the lightbox
+
 
 
 // Testimonials page
@@ -309,7 +311,7 @@ if (contactForm) {
     contactSpinner.style.display = "inline-block";
     contactSubmit.disabled = true;
 
-    //*actually* submit the form after 700ms
+    //*actually* submit the form after 200ms
     setTimeout(() => {
       contactForm.submit();
     }, 200);

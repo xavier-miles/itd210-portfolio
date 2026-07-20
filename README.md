@@ -37,7 +37,7 @@ Index -
 Clipboard from https://creazilla.com/media/clipart/3170143/clipboard, Creative Commons 0 (public domain)
 Review sticky from https://www.clipsafari.com/clips/o286079-review, Creative Commons 0 (public domain)
 
-About page-
+About page -
 Paw prints from https://www.flaticon.com/free-icon/dog-paw_12638
 
 Services -

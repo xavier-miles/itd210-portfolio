@@ -1,33 +1,39 @@
 /* Work done by Xavier Miles for ITD 210 - Web Page Design II. AI-assisted code is marked and explained. */
+/* https://tinyurl.com/barcroftpc */
 /* TO DO:
-  - Figure out layout issues when on landscape orientation on mobile resolutions
-  HOME PAGE: 
-  - work on very large screen size settings? not as much a priority as getting the layout/content down right.
-      Halfway there - convert px values to rem and adjust clamps
+- Add icon for browser tab!
+- Figure out layout issues when on landscape orientation on mobile resolutions
+- work on very large screen size settings? not as much a priority as getting the layout/content down right.
+    Halfway there - convert px values to rem and adjust clamps
+HOME PAGE: 
   - Make Cat Fact fade out/in when the fact changes
   - Figure it out how RARELY the cat facts will go off the bottom of the hero.
   - Figure out how to extra randomize the cat facts
-  ABOUT PAGE:
+ABOUT PAGE:
   - .about-hero: figure out how to make it have a max-height of ~65vh?
   - .about-hero-txt h1: Consider fun font?
-  GALLERY PAGE:
+GALLERY PAGE:
   - Add "thought bubble" on-hover over the animals' heads, containing a fun little jokey phrase? E.g. Slinky: "You got any biscuits??"
-  TESTIMONIALS PAGE:
+TESTIMONIALS PAGE:
+CONTACT PAGE:
+  - On iPhone (14) in Safari, the labels for the checkboxes are slightly off-center towards the right (maybe 8-16px or so). Doesn't show up on Chrome DevTools on PC. https://media.discordapp.net/attachments/700137659036729477/1504124103429459988/image0.jpg?ex=6a087b3b&is=6a0729bb&hm=95a5178c609a0a071f446c4701331e4decfb0c1b6f57f3e772f601c86ae16bfb&=&format=webp&width=416&height=900
+  - On iPhone (14), the date selector is too wide (see above screenshot) - it reaches about the right edge of the contact form.
+    5/15 14:31  I can't figure it out - it doesn't seem to be margin, padding, or alignment 
 
-  COMPLETED:
-  - Index: make cards float up slightly when hovered
-  - Index: make hero buttons animate somehow when hovered
-  - Index: fix card image/text proportions
-  - About: tighten spacing
-  - About: test hero text at more sizes (h1 is kinda big on my 1440p monitor)
-  - About: modify hero so that it's just a banner/ribbon around "Hi, I'm Xavier" and behind the image, instead of the full height of the image
-  - Gallery: Correct the images so that they focus on appropriate sections at large screen sizes (2k+) (use object-[%_%])
-  - Gallery: Make the hero feel the same as the other pages
-  - Refactor max-width media queries into min-width for consistency
-      DONE except for animation keyframe
-  - Double-check color contrast
-  - Make spacing more consistent on every page
-  - Testimonials: Correct the hero so it's consistent with the heros on the other pages
+COMPLETED:
+- Index: make cards float up slightly when hovered
+- Index: make hero buttons animate somehow when hovered
+- Index: fix card image/text proportions
+- About: tighten spacing
+- About: test hero text at more sizes (h1 is kinda big on my 1440p monitor)
+- About: modify hero so that it's just a banner/ribbon around "Hi, I'm Xavier" and behind the image, instead of the full height of the image
+- Gallery: Correct the images so that they focus on appropriate sections at large screen sizes (2k+) (use object-[%_%])
+- Gallery: Make the hero feel the same as the other pages
+- Refactor max-width media queries into min-width for consistency
+    DONE except for animation keyframe
+- Double-check color contrast
+- Make spacing more consistent on every page
+- Testimonials: Correct the hero so it's consistent with the heros on the other pages
 */
 
 /* design tokens for simpler color usage */
@@ -804,7 +810,7 @@ button:hover, button:focus,
   width: auto;
   height: auto;
   padding: 16px;
-  max-height: 90%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -1012,8 +1018,18 @@ button:hover, button:focus,
   font-family: 'Cabin', sans-serif;
 }
 
+/* Next two rulesets are AI-assisted to correct a bug in Safari */
 .contact-form #contactDate {
-  margin-bottom: 16px;
+  max-width: 100%;
+  min-width: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-clip: padding-box;
+}
+
+.contact-form #contactDate::-webkit-calendar-picker-indicator {
+  opacity: 1;
 }
 
 .contact-form fieldset {
@@ -1035,7 +1051,7 @@ button:hover, button:focus,
 /* Style the checkboxes so that the selectable item appears as a card/box instead of a checkbox */
 .contact-fieldset-boxes label {
   font-weight: normal;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -1044,15 +1060,21 @@ button:hover, button:focus,
   border-radius: 12px;
   cursor: pointer;
   margin: 0;
+  position: relative;
+  min-height: 3rem;
 }
 
 /* Accessibly make the checkboxes invisible but still targetable */
 .contact-fieldset-boxes input {
-  opacity: 0;
-  height: 1px;
-  width: 1px;
-  margin: -1px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   border: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 #contactMessage {

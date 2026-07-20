@@ -54,7 +54,7 @@
 		<!-- Form for name, contact info, services needed and (optionally) date -->
 		<!-- I used AI to advise me on how to use ARIA as I am inexperienced with it. -->
 		<form class="contact-form" id="contactForm" action="https://formspree.io/f/maqajyln" method="POST" novalidate>
-			<label for="contactName">Your name</label>
+			<label for="contactName">Name</label>
 			<input type="text" id="contactName" name="name" aria-required="true" aria-describedby="errorName">
 			<p class="contact-error-message" id="errorName" aria-live="polite"></p>
 
@@ -62,7 +62,7 @@
 			<input id="contactContact" name="contactContact" required aria-describedby="errorContact">
 			<p class="contact-error-message" id="errorContact" aria-live="polite"></p>
 			
-			<label for="contactDate">Services needed starting when?</label>
+			<label for="contactDate">Services needed starting when? (optional)</label>
 			<input id="contactDate" name="contactDate" type="date">
 
 			<fieldset aria-describedby="errorService">
