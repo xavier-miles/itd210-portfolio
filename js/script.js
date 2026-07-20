@@ -16,9 +16,7 @@ toggle.addEventListener("click", () => {
 
 //Close the mobile menu if you press esc
 document.addEventListener("keydown", (event) => {
-  if (event.keyCode === 27 && mobileNav.classList.contains("open")) {
-    toggleMobile();
-  }
+  if (event.key === "Escape" && mobileNav.classList.contains("open")) toggleMobile();
 });
 
 //Mobile menu open/close functionality
@@ -93,9 +91,7 @@ if (catFactBtn) {
           catFact.textContent = "Error: Rate limit exceeded, please wait a bit and try again (429)";
         } else if (response.status == 500) {
           catFact.textContent = "Error: Something went wrong with the server, try again later (500)";
-        } else {
-          catFact.textContent = "Error: Something went wrong.";
-        }
+        } else catFact.textContent = "Error: Something went wrong.";
         factLoading.style.display = "none";
         catFact.classList.add("cat-fact-error");
         return;
@@ -145,9 +141,7 @@ if (bgMute) {
   bgMute.addEventListener("click", () => {
     if (!bgIsMuted) {
       bgMute.textContent = "🔇";
-    } else {
-      bgMute.textContent = "🔊";
-    }
+    } else bgMute.textContent = "🔊";
     servicesBg.muted = !bgIsMuted;
     bgIsMuted = !bgIsMuted;
   });
@@ -156,7 +150,8 @@ if (bgMute) {
 
 
 //Gallery page functionality
-const galleryItems = document.querySelectorAll(".galleryItem img");
+const galleryItems = [...document.querySelectorAll(".galleryItem img")];
+let selectedImageIndex = 0;
 
 //build the lightbox
 const lightbox = document.createElement("div");
@@ -173,28 +168,48 @@ lightbox.appendChild(lightboxClose);
 lightbox.appendChild(lightboxImage);
 
 //trigger the lightbox on gallery image click
-galleryItems.forEach((image) => {
+galleryItems.forEach((image, index) => {
   image.addEventListener("click", () => {
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
+    selectedImageIndex = index;
     lightbox.classList.toggle('active');
+    updateLightbox();
   });
 });
 
+//update the lightbox
+function updateLightbox() {
+  let currentImage = galleryItems[selectedImageIndex];
+  lightboxImage.src = currentImage.src;
+  lightboxImage.alt = currentImage.alt;
+}
+
 //close lightbox when you click outside of the image or press Esc
 lightbox.addEventListener("click", (event) => {
-  if (!lightboxImage.contains(event.target)) {
-    lightbox.classList.toggle("active");
-  }
+  if (!lightboxImage.contains(event.target)) lightbox.classList.toggle("active");
 })
 
+//event listeners for lightbox keyboard controls
 document.addEventListener("keydown", (event) => {
-  if (event.keyCode === 27 && lightbox.classList.contains("active")) {
-    lightbox.classList.toggle("active");
+  if (lightbox.classList.contains("active")) {
+    if (event.key === "Escape") lightbox.classList.toggle("active");
+    if (event.key === "ArrowRight") nextImage();
+    if (event.key === "ArrowLeft") prevImage();
   }
 });
 
-//TO DO: Make it so you can use arrow key left/right to page through the images while in the lightbox
+//functions for lightbox scrolling
+function nextImage() {
+  selectedImageIndex = (selectedImageIndex + 1) % galleryItems.length;
+  updateLightbox();
+}
+
+function prevImage() {
+  selectedImageIndex = (selectedImageIndex - 1) % galleryItems.length;
+  if (selectedImageIndex < 0) selectedImageIndex = galleryItems.length - 1;
+  updateLightbox();
+}
+
+//TO DO: Make it so you can swipe left/right to switch images, and maybe add buttons for the functionality?
 
 
 
@@ -327,7 +342,5 @@ const selectedService = params.get("service");
 if (selectedService) {
   const checkbox = document.querySelector(`input[name="serviceType[]"][value="${selectedService}"]`);
 
-  if (checkbox) {
-    checkbox.checked = true;
-  }
+  if (checkbox) checkbox.checked = true;
 }
