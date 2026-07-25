@@ -38,6 +38,25 @@ function toggleMobile() {
   }
 }
 
+// functionality to swipe the mobile menu upwards and away
+let touchStartY = 0;
+let touchEndY = 0;
+
+mobileNav.addEventListener("touchstart", (event) => {
+  if (event.target.closest("a")) {
+    console.log("there are links in the li in the nav bar");
+  } else event.preventDefault();
+  touchStartY = event.changedTouches[0].clientY;
+})
+
+mobileNav.addEventListener("touchend", (event) => {
+  touchEndY = event.changedTouches[0].clientY;
+  if ((touchEndY + 32) < touchStartY) {
+    console.log("swipe up");
+    toggleMobile();
+  }
+})
+
 //checks if you click NOT on the mobile nav, NOT on the header, and then closes the mobile nav if so and changes from ☰ to X
 document.addEventListener("click", function(event) {
   if (!mobileNav.contains(event.target)
@@ -158,6 +177,8 @@ const lightbox = document.createElement("div");
 const lightboxImage = document.createElement("img");
 const lightboxClose = document.createElement("button");
 
+lightboxImage.draggable = false;
+
 lightbox.id = "lightbox";
 
 lightboxClose.id = "lightboxClose";
@@ -188,7 +209,7 @@ lightbox.addEventListener("click", (event) => {
   if (!lightboxImage.contains(event.target)) lightbox.classList.toggle("active");
 })
 
-//event listeners for lightbox keyboard controls
+//event listeners for lightbox keyboard LRs
 document.addEventListener("keydown", (event) => {
   if (lightbox.classList.contains("active")) {
     if (event.key === "Escape") lightbox.classList.toggle("active");
@@ -196,6 +217,32 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") prevImage();
   }
 });
+
+//touch LRs 
+let touchStartX = 0;
+let touchEndX = 0;
+
+lightbox.addEventListener("touchstart", (event) => {
+  touchStartX = event.changedTouches[0].clientX;
+  console.log("mousdown")
+}, false);
+
+lightbox.addEventListener("touchend", (event) => {
+  touchEndX = event.changedTouches[0].clientX;
+  console.log("mousup")
+  swipeLR();
+}, false);
+
+function swipeLR() {
+  if ((touchEndX + 32) < touchStartX) {
+    console.log("swipe left")
+    nextImage();
+  }
+  if ((touchEndX - 32) > touchStartX) {
+    console.log("swipe rite")
+    prevImage();
+  }
+}
 
 //functions for lightbox scrolling
 function nextImage() {
@@ -209,7 +256,7 @@ function prevImage() {
   updateLightbox();
 }
 
-//TO DO: Make it so you can swipe left/right to switch images, and maybe add buttons for the functionality?
+//TO DO: maybe add buttons for the functionality of changing images?
 
 
 

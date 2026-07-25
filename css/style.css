@@ -13,12 +13,11 @@ ABOUT PAGE:
   - .about-hero: figure out how to make it have a max-height of ~65vh?
   - .about-hero-txt h1: Consider fun font?
 GALLERY PAGE:
+  - The line height on the h1 is odd and doesn't hug the text, making it slightly inconsistent with heros on other pages
   - Add "thought bubble" on-hover over the animals' heads, containing a fun little jokey phrase? E.g. Slinky: "You got any biscuits??"
 TESTIMONIALS PAGE:
 CONTACT PAGE:
-  - On iPhone (14) in Safari, the labels for the checkboxes are slightly off-center towards the right (maybe 8-16px or so). Doesn't show up on Chrome DevTools on PC. https://media.discordapp.net/attachments/700137659036729477/1504124103429459988/image0.jpg?ex=6a087b3b&is=6a0729bb&hm=95a5178c609a0a071f446c4701331e4decfb0c1b6f57f3e772f601c86ae16bfb&=&format=webp&width=416&height=900
-  - On iPhone (14), the date selector is too wide (see above screenshot) - it reaches about the right edge of the contact form.
-    5/15 14:31  I can't figure it out - it doesn't seem to be margin, padding, or alignment 
+  
 
 COMPLETED:
 - Index: make cards float up slightly when hovered
@@ -34,6 +33,9 @@ COMPLETED:
 - Double-check color contrast
 - Make spacing more consistent on every page
 - Testimonials: Correct the hero so it's consistent with the heros on the other pages
+- Contact: On iPhone (14) in Safari, the labels for the checkboxes are slightly off-center towards the right (maybe 8-16px or so). Doesn't show up on Chrome DevTools on PC. https://media.discordapp.net/attachments/700137659036729477/1504124103429459988/image0.jpg?ex=6a087b3b&is=6a0729bb&hm=95a5178c609a0a071f446c4701331e4decfb0c1b6f57f3e772f601c86ae16bfb&=&format=webp&width=416&height=900
+- Contact: On iPhone (14), the date selector is too wide (see above screenshot) - it reaches about the right edge of the contact form.
+  5/15 14:31  I can't figure it out - it doesn't seem to be margin, padding, or alignment 
 */
 
 /* design tokens for simpler color usage */
@@ -495,7 +497,7 @@ button:hover, button:focus,
   justify-content: center;
   text-align: center;
   min-height: 96px;
-  flex: 1;
+  flex: .75;
   padding: 1rem;
 }
 
@@ -1292,6 +1294,7 @@ The rest of the media query work was done by me. I converted it from max-width t
   }
 
   .card-text {
+    flex: 2;
     text-align: left;
   }
   
